@@ -1,9 +1,59 @@
 
-
 .cartegory{
-    background-color:rgb(136, 136, 137);
-    margin-top:6rem;
+    display:flex;
+    padding-top:3rem;
 }
-.cartegory-top span{
+.product-filters span{
     color:black;
 }
+
+.cartegory-left{
+    flex:1;
+    background-color: hwb(120 80% 19%);
+    padding:15px;
+}
+
+
+.cartegory-right{
+    padding-left:50px;
+    padding-right:50px ;
+
+    
+}
+
+.products{
+    padding-top:30px;
+    display:flex;
+    gap: 8px;
+    justify-content:space-between;
+    flex-wrap: wrap;
+   
+}
+
+.product-filters{
+    display:flex;
+    justify-content:space-between;
+    
+}
+.product-item{
+    flex: 1 1 calc(25% - 20px); /* Mỗi item chiếm 20% chiều rộng, trừ đi khoảng cách */
+  max-width: calc(25% - 5px); /* Giới hạn chiều rộng tối đa của mỗi item */
+  min-width: 150px; /* Chiều rộng tối thiểu của mỗi item */
+  margin: 10px 0; /* Khoảng cách trên và dưới mỗi item */
+  padding: 20px; /* Khoảng cách bên trong mỗi item */
+  box-sizing: border-box; /* Bao gồm padding và viền trong tính toán kích thước */
+
+    
+}
+.product-item:hover {
+    border: 1px solid #ccc; /* Viền cho mỗi item */
+    
+}
+
+.product-item img{
+    max-width: 100%;
+    height: auto;
+}
+
+
+
