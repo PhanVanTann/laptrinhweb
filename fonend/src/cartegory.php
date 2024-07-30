@@ -6,78 +6,12 @@
     <title>Document</title>
     <script src="https://kit.fontawesome.com/3a92867321.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="home.css">
-    <link rel="stylesheet" href="cartegory.css">
+    <link rel="stylesheet" href="category.css">
 </head>
-<body>
-    <header>
-        <div class="menu-logo">
-            <li class="menu">
-                <a class="menu-a" href="#">
-                    <i class="fa-solid fa-bars"></i>
-                </a>
-                <ul class="menu-display">
-                    <li><a href="#">Sữa Rửa Mặt</a></li>
-                    <li><a href="#">Nước Tẩy Trang</a></li>
-                    <li><a href="#">Sữa Tắm</a></li>
-                    <li><a href="#">Kem Chống Nắng</a></li>
-                    <li><a href="#">Thuốc TRị Mụn</a></li>
-                    <li><a href="#">Son Môi</a></li>
-                    <li><a href="#">Dầu Gội Đầu</a></li>
-                </ul>
-            </li>
-            <li class="logo">
-                <a class="logo-img" href="#">
-                    <img src="../img/logo.png" alt="Logo Shop" >
-                        <span>HASAKI</span>
-                </a>
-            </li>
-        </div>
-        <div class="search">
-            <form >
-                <input type="text" class="search-input" placeholder="Tìm sản phẩm, thương hiệu bạn mong muốn...">
-                <button class="search-button">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </form>
-        </div>
-
-        <div class="other">
-            <li>
-                <div class="cart">
-                        <a href="#">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                            <span class="notification">1</span>
-                        </a>
-                    
-                </div>
-            </li>
-           
-        
-            <li>
-                <div class="store">
-                    <a href="#"><i class="fa-solid fa-shop"></i></a>
-                </div>
-            </li>
-
-             <li class="taikhoan">
-                <i class="fa-solid fa-user"></i>
-                <a href="#" >
-                    <span>Chào Tấn</span>
-                    <i class="fa-solid fa-caret-down"></i>
-                </a> 
-                    
-                    
-                    <ul class="menu-taikhoan">
-                        <li><a href="#">Thông Tin Tài Khoản</a></li>
-                        <li><a href="#">Đăng Xuất</a></li>
-                        <li><a href="#">Quản Lý Đơn Hàng</a></li>
-                        <li><a href="#">Địa Chỉ Giao Hàng</a></li>
-                    </ul>
-            </li>
-
-        </div>
-    </header>
-    
+    <?php 
+            include "header.php"
+        ?>
+    <div class="link-cartegory"><a href="#">Trang chủ </a><span>&#10230;</span> <a href="#"> Kem Chống Nắng</a></div>
     <section class="cartegory">
         
         <div class="cartegory">
@@ -88,7 +22,7 @@
                 <div class="filter-section">
                   
                     <div class="filter-price">
-                        <h2>KHOẢNG GIÁ</h2>
+                        <h4>KHOẢNG GIÁ</h4>
                         <div class="price-inputs">
                             <input type="text" placeholder="₫ TỪ">
                             <span>-</span>
@@ -97,7 +31,7 @@
                         <button class="apply-button">Áp dụng</button>
                     </div>
                     <div class="filter-brand">
-                        <h2>THƯƠNG HIỆU</h2>
+                        <h4>THƯƠNG HIỆU</h4>
                         <ul>
                             <li><input type="checkbox" id="loreal"><label for="loreal">L'Oreal (39)</label></li>
                             <li><input type="checkbox" id="cocoon"><label for="cocoon">Cocoon (31)</label></li>
@@ -109,7 +43,7 @@
                         </ul>
                     </div>
                     <div class="filter-brand">
-                        <h2>Size</h2>
+                        <h4>Size</h4>
                         <ul>
                             <li><input type="checkbox" id="loreal"><label for="loreal">Lớn</label></li>
                             <li><input type="checkbox" id="cocoon"><label for="cocoon">vừa</label></li>
@@ -127,7 +61,7 @@
                 <div class="product-list">
                     <div class="product-filters">
                         <div>
-                            <p><a href="#">Trang chủ</a><span>&#10230;</span> <a href="#"> Kem Chống Nắng</a></p>
+
                             <button class="filter-button">Sắp xếp</button>
                             <button class="filter-button">Mới nhất</button>
                             <button class="filter-button active">Bán chạy</button>

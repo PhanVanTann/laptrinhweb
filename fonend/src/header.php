@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://kit.fontawesome.com/3a92867321.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="home.css">
-</head>
-<body>
-    <header>
+<header>
         <div class="menu-logo">
             <li class="menu">
                 <a class="menu-a" href="#">
@@ -67,7 +57,7 @@
                     
                     
                     <ul class="menu-taikhoan">
-                        <li><a href="#">Thông Tin Tài Khoản</a></li>
+                        <li><a href="taikhoan.php">Thông Tin Tài Khoản</a></li>
                         <li><a href="#">Đăng Xuất</a></li>
                         <li><a href="#">Quản Lý Đơn Hàng</a></li>
                         <li><a href="#">Địa Chỉ Giao Hàng</a></li>
@@ -76,15 +66,3 @@
 
         </div>
     </header>
-
-    <section class="backgroud">
-        <img src="../img/backgroud.png"> 
-    </section>
-    <section class="backgroud">
-        <img src="../img/backgroud.png"> 
-    </section>
-</body>
-
-
-
-</html>
