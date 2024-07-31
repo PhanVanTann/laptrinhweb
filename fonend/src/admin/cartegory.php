@@ -13,10 +13,10 @@
         <section class="admin-content">
             <div class="admin-content-left">
                 <ul>
-                    <li><a href="#">Danh Mục</a>
+                    <li><a href="#">MeNu</a>
                         <ul>
-                            <li><a href="#">Thêm Danh Mục</a></li>
-                            <li><a href="#">Danh Sách Danh Mục</a></li>
+                            <li><a href="#">Thêm MeNu</a></li>
+                            <li><a href="#">Danh Sách MeNU</a></li>
                         </ul>
                     </li>
                     

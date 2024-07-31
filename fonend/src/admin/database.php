@@ -1,60 +1,59 @@
+<?php 
+include "config.php";
+?>
+
 <?php
 
 class Database {
-    public $host= DB_HOST;
-    public $user=DB_USER;
-    public $pass =DB_PASS;
-    public $dbname = DB_NAME;
-
-    public $link ;
-    public $error;
-
+    private $connection;
 
     public function __construct() {
-        $this->connectDB();
+        $this->connect();
     }
 
-    private function connectDB() {
-      
-        $this->link = new mysqli($this->host, $this->user, $this->pass, $this->dbname);
+    private function connect() {
+        $host = 'localhost';
+        $user = 'root';
+        $pass = '';
+        $db = 'web_banmypham';
 
-        if ($this->link) {
-            $this->error ="Connection fail" .$this->link->connect_error;
-            return false;
-           
+        $this->connection = new mysqli($host, $user, $pass, $db);
+
+        if ($this->connection->connect_error) {
+            die("Connection failed: " . $this->connection->connect_error);
         }
     }
 
     public function select($query) {
-        $result = $this->link->query($query);
+        $result = $this->connection->query($query);
 
-        if ($this->link->error) {
-            die("Query failed: " . $this->link->error);
+        if ($this->connection->error) {
+            die("Query failed: " . $this->connection->error);
         }
 
         return $result;
     }
 
     public function insert($query) {
-        $this->link->query($query);
+        $this->connection->query($query);
 
-        if ($this->link->error) {
-            die("Insert failed: " . $this->link->error);
+        if ($this->connection->error) {
+            die("Insert failed: " . $this->connection->error);
         }
     }
 
     public function update($query) {
-        $this->link->query($query);
+        $this->connection->query($query);
 
-        if ($this->link->error) {
-            die("Update failed: " . $this->link->error);
+        if ($this->connection->error) {
+            die("Update failed: " . $this->connection->error);
         }
     }
 
 
     
     public function delete($query) {
-        if ($this->link->query($query) === TRUE) {
+        if ($this->connection->query($query) === TRUE) {
             return true;
         } else {
            

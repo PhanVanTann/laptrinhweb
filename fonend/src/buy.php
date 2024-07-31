@@ -24,15 +24,6 @@
                 <span class="address">đại học, đại học, Quận 2, Hồ Chí Minh</span>
             </div>
         </div>
-
-        <div class="payment-method">
-            <h3>Hình thức thanh toán</h3>
-            <div class="payment-option">
-                <input type="radio" id="cod" name="payment" checked>
-                <label for="cod">Thanh toán khi nhận hàng (COD)</label>
-            </div>
-        </div>
-
         <div class="order-summary">
             <h3>Đơn hàng</h3>
             <div class="order-details">

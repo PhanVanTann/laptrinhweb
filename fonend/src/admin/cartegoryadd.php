@@ -1,25 +1,25 @@
 <?php 
 include "header.php";
 include "slider.php";
-include "class/categoryclass.php";
+include "class/cartegoryclass.php";
 ?>
 
 
 
 
 <?php
-    $category = new category;
+    $cartegory = new cartegory;
     if($_SERVER['REQUEST_METHOD']==='POST'){
-        $category_name=$_POST['category_name'];
-        $insert_category = $category -> insert_category($category_name);
+        $cartegory_name=$_POST['cartegory_name'];
+        $insert_cartegory = $cartegory -> insert_cartegory($cartegory_name);
     }
 ?>
 
 <div class="admin-content-right">
-            <div class="admin-content-right-category_add">
+            <div class="admin-content-right-cartegory_add">
                 <h1>Thêm danh mục</h1>
                 <form action="" method="POST">
-                    <input required name="category_name" type="text" placeholder="Nhập tên danh mục">
+                    <input required name="cartegory_name" type="text" placeholder="Nhập tên danh mục">
                     <button type="submit">Thêm</button>
                 </form>
             </div>
