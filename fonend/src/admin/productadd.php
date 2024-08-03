@@ -1,13 +1,16 @@
 <?php 
 include "header.php";
 include "slider.php";
-include "class/productclass.php"
+require_once "class/productclass.php";
+
 ?>
 
+
 <?php 
+  
      $product = new product;
      if($_SERVER['REQUEST_METHOD']==='POST'){
-        var_dump($_POST,$_FILES);
+  
          $insert_product = $product -> insert_product($_POST,$_FILES);
      }
 ?>

@@ -17,7 +17,7 @@ include "slider.php";
 
 <div class="admin-content-right">
             <div class="admin-content-right-cartegory_add">
-                <h1>Thêm danh mục</h1>
+                <h1>Thêm Loại Sản Phẩm</h1>
                 <form action="" method="POST">
                     <input required name="cartegory_name" type="text" placeholder="Nhập tên danh mục">
                     <button type="submit">Thêm</button>

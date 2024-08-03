@@ -1,5 +1,5 @@
 <?php 
-include "./database.php"
+require_once "database.php";
 ?>
 
 <?php 
@@ -9,12 +9,12 @@ class product {
     public function __construct(){
         $this -> db =new Database();
     }
-
     public function show_cartegory(){
         $query ="SELECT * FROM tbl_cartegory ORDER BY cartegory_id DESC";
         $result= $this -> db -> select($query);
         return $result;
     }
+
 
     public function insert_product(){
         $product_name = $_POST['product_name'];
@@ -23,7 +23,7 @@ class product {
         $product_price_new = $_POST['product_price_new'];
         $product_desc = $_POST['product_desc'];
         $product_img = $_FILES['product_img']['name'];
-        move_uploaded_file( $_FILES['product_img']['tmp_name'],"uploads/".$_FILES['product_img']['name']);
+        move_uploaded_file( $_FILES['product_img']['tmp_name'],"img/".$_FILES['product_img']['name']);
        
 
         $query = "INSERT INTO tbl_product(
@@ -42,8 +42,7 @@ class product {
         '$product_desc',
         '$product_img'
         )";
-        $result= $this -> db -> insert($query);
-        return $result;
+        
         // header('location:productlist.php');
     }
 

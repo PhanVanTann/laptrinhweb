@@ -7,7 +7,11 @@
     <script src="https://kit.fontawesome.com/3a92867321.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="header.css">
-    <?php include "class/cartegoryclass.php"; ?>
+    <?php 
+           include_once "class/cartegoryclass.php";
+          
+    ?>
+    
 </head>
 <body>
 <?php

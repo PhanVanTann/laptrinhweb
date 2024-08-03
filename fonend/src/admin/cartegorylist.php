@@ -11,7 +11,7 @@ $show_cartegory = $cartegory->show_cartegory();
 
 <div class="admin-content-right">
     <div class="admin-content-right-cartegory_list">
-        <h1>Danh Sách MeNu</h1>
+        <h1>Danh Sách Loại Sản Phẩm</h1>
         <table>
             <tr>
                 <th>Stt</th>
