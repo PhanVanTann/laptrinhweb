@@ -84,7 +84,8 @@ i{
     padding-top:10px;
 }
 
-.search{
+.form-search{
+    display: flex;
     padding: 10px ;
 }
 
@@ -129,9 +130,6 @@ i{
 
 
 
-.search{
-    display:inline-block;
-}
 .search-input {
     padding: 10px;
     width:30rem;
@@ -147,7 +145,6 @@ i{
     padding: 10px;
     cursor: pointer;
     outline: none;
-    align-items: center;
     justify-content: center;
     background: none;
 }

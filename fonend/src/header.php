@@ -22,7 +22,7 @@
             </li>
         </div>
         <div class="search">
-            <form >
+            <form class="form-search">
                 <input type="text" class="search-input" placeholder="Tìm sản phẩm, thương hiệu bạn mong muốn...">
                 <button class="search-button">
                     <i class="fa-solid fa-magnifying-glass"></i>
