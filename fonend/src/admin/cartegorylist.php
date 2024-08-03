@@ -1,7 +1,7 @@
 <?php
 include "header.php";
 include "slider.php";
-
+include "class/cartegoryclass.php"; 
 ?>
 
 <?php
@@ -34,9 +34,7 @@ $show_cartegory = $cartegory->show_cartegory();
                         <td><a href="cartegoryedit.php?cartegory_id=<?php echo $result['cartegory_id'] ?>">Sửa</a>|<a href="cartegorydelete.php?cartegory_id=<?php echo $result['cartegory_id']; ?>">xóa</a></td>
                     </tr>
             <?php
-                    if ($i > 28) {
-                        $i = 0;
-                    }
+                    
                 }
             }
             ?>

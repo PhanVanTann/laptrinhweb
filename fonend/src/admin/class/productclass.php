@@ -46,6 +46,12 @@ class product {
         // header('location:productlist.php');
     }
 
+    public function show_product(){
+            $query = "SELECT * FROM tbl_product ORDER BY product_id DESC";
+            $result= $this -> db -> select($query);
+            return $result;
+    }
+
 
 
 
