@@ -1,6 +1,3 @@
-<?php 
-include "./database.php"
-?>
 
 <?php 
 class cartegory {
@@ -14,6 +11,7 @@ class cartegory {
         $query = "INSERT INTO tbl_cartegory(cartegory_name) VALUE('$cartegory_name')";
         $result= $this -> db -> insert($query);
         header('location:cartegorylist.php');
+        return $result;
     }
 
     public function show_cartegory(){

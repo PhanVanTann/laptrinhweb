@@ -8,16 +8,17 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="header.css">
     <?php 
-           include_once "class/cartegoryclass.php";
-          
+            include "class/cartegoryclass.php";
+            include "class/productclass.php";
+            include "database.php";
+            $cartegory = new cartegory;
+            $show_cartegory = $cartegory->show_cartegory();
+         
     ?>
     
 </head>
 <body>
-<?php
-$cartegory = new cartegory;
-$show_cartegory = $cartegory->show_cartegory();
-?>
+
 <header>
         <div class="menu-logo">
        

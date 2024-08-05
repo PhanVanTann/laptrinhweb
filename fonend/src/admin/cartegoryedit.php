@@ -2,6 +2,7 @@
 include "header.php";
 include "slider.php";
 
+
 ?>
 <?php 
  $cartegory = new cartegory;

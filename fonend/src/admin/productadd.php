@@ -1,7 +1,7 @@
 <?php 
 include "header.php";
 include "slider.php";
-require_once "class/productclass.php";
+
 
 ?>
 
@@ -35,6 +35,8 @@ require_once "class/productclass.php";
                                 }
                                 ?>
                             </select>
+                            <label>Thương Hiệu<span style="color:red;">*</span></label>
+                            <input name="product_trademark" required  type="text" >
                             <label>Giá Sản Phẩm<span style="color:red;">*</span></label>
                             <input name="product_price" required  type="text" >
                             <label>Giá Khuyến mãi<span style="color:red;">*</span></label>
