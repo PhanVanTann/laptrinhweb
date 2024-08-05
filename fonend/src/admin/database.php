@@ -24,41 +24,73 @@ class Database {
         }
     }
 
-    public function select($query) {
-        $result = $this->connection->query($query);
+    public function select($query, $params = [], $types = "") {
+        $stmt = $this->connection->prepare($query);
+        if (!$stmt) {
+            die("Prepare failed: " . $this->connection->error);
+        }
 
+        if (!empty($params)) {
+            $stmt->bind_param($types, ...$params);
+        }
+
+        $stmt->execute();
+        $result = $stmt->get_result();
         if ($this->connection->error) {
             die("Query failed: " . $this->connection->error);
         }
-
+        $stmt->close();
         return $result;
     }
 
-    public function insert($query) {
-        $this->connection->query($query);
-
-        if ($this->connection->error) {
-            die("Insert failed: " . $this->connection->error);
+    public function insert($query, $params = [], $types = "") {
+        $stmt = $this->connection->prepare($query);
+        if (!$stmt) {
+            die("Prepare failed: " . $this->connection->error);
         }
+
+        if (!empty($params)) {
+            $stmt->bind_param($types, ...$params);
+        }
+
+        if (!$stmt->execute()) {
+            die("Execute failed: " . $stmt->error);
+        }
+        $stmt->close();
     }
 
-    public function update($query) {
-        $this->connection->query($query);
-
-        if ($this->connection->error) {
-            die("Update failed: " . $this->connection->error);
+    public function update($query, $params = [], $types = "") {
+        $stmt = $this->connection->prepare($query);
+        if (!$stmt) {
+            die("Prepare failed: " . $this->connection->error);
         }
+
+        if (!empty($params)) {
+            $stmt->bind_param($types, ...$params);
+        }
+
+        if (!$stmt->execute()) {
+            die("Execute failed: " . $stmt->error);
+        }
+        $stmt->close();
     }
 
-
-    
-    public function delete($query) {
-        if ($this->connection->query($query) === TRUE) {
-            return true;
-        } else {
-           
-            return false; 
+    public function delete($query, $params = [], $types = "") {
+        $stmt = $this->connection->prepare($query);
+        if (!$stmt) {
+            die("Prepare failed: " . $this->connection->error);
         }
+
+        if (!empty($params)) {
+            $stmt->bind_param($types, ...$params);
+        }
+
+        if (!$stmt->execute()) {
+            die("Execute failed: " . $stmt->error);
+        }
+        $stmt->close();
     }
 }
+
+
 ?>
