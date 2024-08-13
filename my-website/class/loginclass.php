@@ -32,6 +32,8 @@ class Login {
             echo 'Thông tin đăng nhập không chính xác'; // Email không tồn tại
         }
     }
+
+  
 }
 
 // Xử lý yêu cầu POST từ form đăng nhập

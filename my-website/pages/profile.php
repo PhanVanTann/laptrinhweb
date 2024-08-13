@@ -1,4 +1,6 @@
-<?php include "../includes/header.php"?>
+<?php include "../includes/header.php";
+include "../class/profileclass.php"
+?>
 <?php 
 session_start();
 // Giả sử bạn đã lưu thông tin người dùng trong phiên
@@ -7,13 +9,49 @@ $userRole = $_SESSION['roles'] ?? 0; // Mặc định là 0 nếu không có gi�
 
 // Kiểm tra nếu người dùng là admin
 $isAdmin = $userRole == 1;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['oldPassword']) && isset($_POST['newPassword'])) {
+        $userId = $_SESSION['user_id'];
+        $oldPassword = $_POST['oldPassword'];
+        $newPassword = $_POST['newPassword'];
+
+        // Kiểm tra xem mật khẩu cũ có khớp với mật khẩu hiện tại không
+        if ($result['passwords'] === $oldPassword) {
+            // Cập nhật mật khẩu mới
+            $profile = new Profile();
+            $profile->update_password($userId, $newPassword);
+            echo "Mật khẩu đã được cập nhật thành công!";
+        } else {
+            echo "Mật khẩu cũ không đúng!";
+        }
+    }
+}
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $userId = $_SESSION['user_id'];
+    $fullname = $_POST['fullname'];
+    $phone = $_POST['phone'];
+    $email = $_POST['email'];
+    $address = $_POST['address'];
+
+    $profile = new Profile();
+    $result = $profile->update_profile($userId, $fullname, $phone,$email,$address);
+}
+
+$profile = new profile; 
+$show_profile = $profile->show_profile();
+$result = null;
+if($show_profile){
+    $result = $show_profile->fetch_assoc();
+}
 ?>
 <section class="icons-conta"></section>
 <section class="profile">
     <div class="profile_left">
         <div class="profile_left_img">
             <img src="anhr/gift.png">
-            <h3>Phan Van Tan</h3>
+            <h3><?php echo $result['fullname'] ?></h3>
         </div>
         <hr>
         <div  class="profile_left_manageprofile">
@@ -37,9 +75,9 @@ $isAdmin = $userRole == 1;
                     <form action="">         
                         <h2>Tài Khoản Mật Khẩu</h2>              
                         <label for="">Email:</label>
-                        <input type="email" value="tan@gmail.com" readonly>
+                        <input type="email" value="<?php echo $result['email'] ?>" readonly>
                         <label>Mật Khẩu:</label>
-                        <input type="text" value="Mật Khẩu" readonly>
+                        <input type="password" value="<?php echo $result['passwords'] ?>" readonly>
                         <button type="button" id="changePasswordButton">Thay Đổi Mật Khẩu</button>
                     </form>
                 
@@ -50,25 +88,25 @@ $isAdmin = $userRole == 1;
                             <h2>Thay Đổi Mật Khẩu</h2>
                             <form id="changePasswordForm">
                                 <label for="">Nhập Mật Khẩu Cũ:</label>
-                                <input type="text" placeholder="Mật khẩu cũ">
+                                <input type="password"  placeholder="Nhập Mật khẩu cũ">
                                 <label>Nhập Mật Khẩu Mới:</label>
-                                <input type="text" placeholder="Mật Khẩu mới">
+                                <input type="password"  placeholder="Nhập Mật Khẩu mới">
                                 <button type="submit">Thay Đổi</button>
                             </form>
                         </div>
                 </div>
 
                 <div class="profile_right_managerinformation" id="information">
-                    <form class="form_profile" action="">
+                    <form class="form_profile" action="" method="post">
                         <h2>Thông Tin</h2>
                         <label for="">Họ Và Tên:</label>
-                        <input type="text"  id="name" value="Phan Văn Tấn" readonly>
+                        <input type="text" name="fullname" id="name" value="<?php echo $result['fullname'] ?>" readonly>
                         <label for="">Số Điện Thoại:</label>
-                        <input type="number" name="" id="phone" value="123456789"  readonly>
+                        <input type="number" name="phone" id="phone" value="<?php echo $result['phone'] ?>"  readonly>
                         <label for="">Gmail:</label>
-                        <input type="email" name="" id="email" value="tan@gmail.com"  readonly>                     
+                        <input type="email" name="email" id="email" value="<?php echo $result['email'] ?>"  readonly>                     
                         <label for="">Địa Chỉ Nhận Hàng:</label>
-                        <input type="text" id="address" value="quan9/đình phong phú"  readonly>
+                        <input type="text" name="address" id="address" value="<?php echo $result['deliveryaddress'] ?>"  readonly>
                         <button type="button" id="editButton">Sửa</button>
                         <button type="submit" id="saveButton" style="display:none;" >Lưu</button>
                     </form>

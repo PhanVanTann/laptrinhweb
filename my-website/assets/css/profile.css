@@ -72,7 +72,9 @@
     color: var(--pink);
     border:2px solid #b22222;
 }
-
+.profile_right_manageraccount input{
+    margin-right: 50px;
+}
 .profile_right_manageraccount input:hover{
     cursor: not-allowed;
 }

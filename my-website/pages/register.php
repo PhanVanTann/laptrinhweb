@@ -46,6 +46,10 @@
                             <input type="email" name="email" class="form-control" id="email" placeholder="Enter email">
                         </div>
                         <div class="form-group">
+                            <label for="deliveryaddress">Delivery address</label>
+                            <input type="text" name="deliveryaddress" class="form-control" id="deliveryaddress" placeholder="Enter Delivery address">
+                        </div>
+                        <div class="form-group">
                             <label for="phone">Phone</label>
                             <input type="number" name="phone" class="form-control" id="phone" placeholder="Enter Phone">
                         </div>
@@ -53,6 +57,7 @@
                             <label for="passwords">Password</label>
                             <input type="password" name="passwords" id="passwords" class="form-control" placeholder="Enter Password">
                         </div>
+                        
                         <div class="col-md-12 text-center mb-3">
                             <button type="submit" class="btn btn-block mybtn btn-primary tx-tfm">Get Started For Free</button>
                         </div>

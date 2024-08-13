@@ -36,6 +36,7 @@ class Register {
     public function insert_register($postData) {
         $fullname = $postData['fullname'];
         $email = $postData['email'];
+        $deliveryaddress = $postData['deliveryaddress'];
         $phone = $postData['phone'];
         $passwords = $postData['passwords'];   
 
@@ -52,12 +53,13 @@ class Register {
         $query = "INSERT INTO tbl_register (
             fullname,
             email,
+            deliveryaddress,
             phone,
             passwords
-        ) VALUES (?, ?, ?, ?)";
+        ) VALUES (?, ?, ?, ?,?)";
         
-        $params = [$fullname, $email, $phone, $passwords];
-        $types = "ssss"; // s: string (tất cả các tham số đều là chuỗi)
+        $params = [$fullname, $email,$deliveryaddress, $phone, $passwords];
+        $types = "sssss"; // s: string (tất cả các tham số đều là chuỗi)
 
         $this->db->insert($query, $params, $types);
 
