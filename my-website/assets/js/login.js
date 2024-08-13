@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (data.trim() === 'success') {
                 localStorage.setItem("loggedIn", "true");  // Lưu trạng thái đăng nhập
                 alert('Bạn đã đăng nhập thành công!');  // Hiển thị thông báo đăng nhập thành công
-                window.location.href = 'dashboard.php';  // Chuyển hướng đến trang dashboard hoặc trang khác
+                window.location.href = '../pages/home.php';  // Chuyển hướng đến trang dashboard hoặc trang khác
             } else {
                 alert(data); // Hiển thị thông báo lỗi từ server
             }

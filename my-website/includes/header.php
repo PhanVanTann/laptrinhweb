@@ -7,21 +7,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://kit.fontawesome.com/3a92867321.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../assets/css/header.css">
-    <link rel="stylesheet" href="../assets/css/footer.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">   
+    <link rel="stylesheet" href="../assets/css/home.css">  
+    <link rel="stylesheet" href="../assets/css/product.css">  
+    <link rel="stylesheet" href="../assets/css/cartegory.css">  
+    <link rel="stylesheet" href="../assets/css/profile.css">  
+    <link rel="stylesheet" href="../assets/css/cart.css">
+    <link rel="stylesheet" href="../assets/css/admin.css">
 
+    <script src="../assets/js/cartegory.js"></script> 
+    <script src="../assets/js/home.js"></script> 
+    <script src="../assets/js/product.js"></script> 
+    <script src="../assets/js/profile.js"></script> 
+    <script src="../assets/js/cart.js"></script>
+    <script src="../assets/js/admin.js"></script>
 </head>
-<body>
-    <header>
+ <header>
         <input type="checkbox" name="" id="toggler">
        <label for="toggler" class="fas fa-bars"></label>
 
-        <a href="#" class="logo">flower <span>.</span></a>
+        <a href="../pages/home.php" class="logo">Cosmetics <span>.</span></a>
 
         <nav class="navbar">
-            <a href = "#home">home</a>
-            <a href = "cartegory.html">products</a>
-            <a href="profile.html">Profile</a>
-            <a href="#">Cart</a>         
+            <a href = "../pages/home.php">home</a>
+            <a href = "../pages/cartegory.php">products</a>
+            <a href="../pages/profile.php">Profile</a>
+            <a href="../pages/cart.php">Cart</a>         
         </nav>
         
 
@@ -30,5 +41,5 @@
             <a href="#" id="logout" style="display: none;">Logout</a>
         </div>
     </header>
-<?php include "footer.php"?>
+
 

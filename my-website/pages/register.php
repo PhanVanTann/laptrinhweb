@@ -11,9 +11,16 @@
 
 <?php 
     include "../class/registerclass.php";
+    $message = '';
+    $redirect = false;
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $register = new Register();
-        $register->insert_register($_POST);
+        $message = $register->insert_register($_POST);
+
+        // Kiểm tra nếu đăng ký thành công
+        if ($message === "Đăng ký thành công!") {
+            $redirect = true;
+        }
     }
 ?>
 
@@ -26,6 +33,9 @@
                     <div class="logo mb-3 text-center">
                         <h1>Signup</h1>
                     </div>
+                    <?php if ($message): ?>
+                        <div class="alert alert-info"><?php echo htmlspecialchars($message); ?></div>
+                    <?php endif; ?>
                     <form name="registration" method="POST">
                         <div class="form-group">
                             <label for="fullname">Full Name</label>
@@ -56,5 +66,19 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            <?php if ($message): ?>
+                alert("<?php echo addslashes($message); ?>");
+                <?php if ($redirect): ?>
+                    
+                        window.location.href = 'login.php';
+                   
+                <?php endif; ?>
+            <?php endif; ?>
+        });
+    </script>
+
+    
 </body>
 </html>
