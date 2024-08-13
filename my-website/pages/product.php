@@ -1,6 +1,11 @@
 
 
    <?php include "../includes/header.php"?>
+   <?php 
+    session_start();
+    $userRole = $_SESSION['roles'] ?? 0;
+    $isUser = $userRole == 0;
+?>
     <section class="icons-conta"> </section>
     
     <section class="product_decs">
@@ -10,9 +15,9 @@
                 <img id="mainImage" src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" >
             </div>
             <div class="product_decs_left_Imgsmail">
-                    <img src="./anhr/kemchongnag1.jpg" alt="Thumbnail 1" onclick="changeImage('./anhr/kemchongnag1.jpg')">
+                    <img src="../assets/img/kemchongnag1.jpg" alt="Thumbnail 1" onclick="changeImage('../assets/img/kemchongnag1.jpg')">
                     <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="Thumbnail 2" onclick="changeImage('https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png')">
-                    <img src="./anhr/kemchongnag1.jpg" alt="Thumbnail 1" onclick="changeImage('./anhr/kemchongnag1.jpg')">
+                    <img src="../assets/img/kemchongnag1.jpg" alt="Thumbnail 1" onclick="changeImage('../assets/img/kemchongnag1.jpg')">
                     <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="Thumbnail 4" onclick="changeImage('https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png')">
             </div>
         </div>
@@ -41,10 +46,12 @@
                             <li>Công dụng: Kiểm soát dầu, bảo vệ da khỏi tia UV</li>
                         </ul>
             </div>
+            <?php if ($isUser): ?>
             <div class="product_decs_right_buy">
                 <button>Thêm vào giỏ hàng</button>
                 <button>Mua ngay NowFree 2H</button>
             </div>
+            <?php endif; ?>
             <hr>
         </div>
         

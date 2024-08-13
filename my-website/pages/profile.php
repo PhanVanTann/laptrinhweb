@@ -1,4 +1,13 @@
 <?php include "../includes/header.php"?>
+<?php 
+session_start();
+// Giả sử bạn đã lưu thông tin người dùng trong phiên
+// Lấy role của người dùng từ phiên hoặc từ cơ sở dữ liệu
+$userRole = $_SESSION['roles'] ?? 0; // Mặc định là 0 nếu không có giá trị
+
+// Kiểm tra nếu người dùng là admin
+$isAdmin = $userRole == 1;
+?>
 <section class="icons-conta"></section>
 <section class="profile">
     <div class="profile_left">
@@ -14,9 +23,11 @@
                 <li><a href="#information">Thông Tin Của Bạn</a></li>
             </ul>
         </div>
+        <?php if ($isAdmin): ?>
         <div class="profile_left_manageadmin">
             <h2><a href="admin.php">Quản Lý Cửa Hàng</a> </h2>           
         </div>
+        <?php endif; ?>
         
     </div>
     <div class="profile_right">

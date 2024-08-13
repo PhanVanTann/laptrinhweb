@@ -22,6 +22,11 @@
     <script src="../assets/js/cart.js"></script>
     <script src="../assets/js/admin.js"></script>
 </head>
+<?php 
+session_start();
+$userRole = $_SESSION['roles'] ?? 0; 
+$isUser = $userRole == 0;
+?>
  <header>
         <input type="checkbox" name="" id="toggler">
        <label for="toggler" class="fas fa-bars"></label>
@@ -32,7 +37,9 @@
             <a href = "../pages/home.php">home</a>
             <a href = "../pages/cartegory.php">products</a>
             <a href="../pages/profile.php">Profile</a>
-            <a href="../pages/cart.php">Cart</a>         
+            <?php if ($isUser): ?>
+            <a href="../pages/cart.php">Cart</a> 
+            <?php endif;?>        
         </nav>
         
 
