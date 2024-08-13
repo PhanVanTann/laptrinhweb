@@ -1,0 +1,539 @@
+:root{
+    --pink:#e84393;
+}
+
+*{
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    outline: none; border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+   
+}
+hr {
+    border: none; 
+    border-top: 2px solid #b22222; 
+    margin: 10px 0; 
+}
+
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    overflow-x: hidden;
+}
+
+section{
+    padding: 2rem 9%;
+}
+
+/*header*/
+.heading{
+    text-align: center;
+    font-size: 4rem;
+    color: #333;
+    padding: 1rem;
+    margin: 2rem 0;
+    background:  rgba(255, 51, 153,.05);
+}
+
+.heading span{
+    color: var(--pink);
+}
+
+.btn{
+    display: inline-block;
+    margin-top: 1rem;
+    border-radius: 5rem;
+    background: #333;
+    color: #fff;
+    padding: 1.5rem 1rem;
+    cursor: pointer;
+    font-size: 1.7rem;
+}
+
+.btn:hover{
+    background-color: var(--pink);
+  
+}
+header{
+    position: fixed;
+    top: 0; left: 0; right:0 ;
+    background: #fff;
+    padding: 2rem 9%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.1 );
+}
+
+header .logo{
+    font-size: 3rem;
+    color: #333;
+    font-weight: bolder;
+}
+
+header .logo span{
+    color: var(--pink);
+}
+
+header .navbar a{
+    font-size: 2rem;
+    padding: 0 0.5rem;
+    color:#666 ;
+}
+
+header .navbar a:hover{
+    color: var(--pink);
+}
+
+header .icons a{
+    font-size: 2rem;
+    color: #333;
+    margin-left: 1rem;
+}
+
+header .login{
+   
+    padding: 10px;
+}
+
+header .icons a:hover{
+    color:var(--pink);
+}
+
+header #toggler{
+    display: none;
+}
+
+header .fa-bars{
+    font-size: 3rem;
+    color: #333;
+    border-radius: .5rem;
+    padding: .5rem 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+
+/**/
+.home{
+    display: flex;
+    align-items:center;
+    min-height: 100vh;
+    margin-top: 55px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: background-image 1s ease-in-out;
+    background-size:cover ;
+    background-position: bottom ;
+    position: relative;
+}
+.content{
+    font-size: 2rem;
+    color:black;
+    
+}
+.content div{
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50px;
+    padding: 30px;
+}
+
+
+
+.home  .content{
+    max-width: 50rem;
+}
+
+.home .content h3{
+    margin-bottom:5px ;
+    font-size: 6rem;
+    color: #333;
+}
+
+.home .content spam{
+    font-size: 3.5rem;
+    color: var(--pink);
+    padding: 1rem 0;
+    line-height: 1.5;
+}
+
+.home .content p{
+    font-size: 1.5rem;
+    color: #333;
+    padding: 1rem 0;
+    line-height: 1.5;
+}
+
+
+
+.about .row{
+    display: flex;
+    align-items: center;
+    gap:2rem;
+    flex-wrap: wrap;
+    padding: 2rem 0;
+    padding-bottom: 3rem;
+}
+
+.about .row .img-container{
+    flex: 1 1 40rem;
+    position: relative;
+}
+
+.about .row .img-container img{
+    width: 100%;
+    height: 100%;
+    border: 1.5rem solid #fff;
+    box-shadow: 0.5rem 1rem rgba(.1,.1,.1,.1);
+}
+
+.about .row .img-container h3{
+    position: absolute;
+    top: 50%; transform: translateY(-50%);
+    font-size: 3rem;
+    background: #fff;
+    width:100%;
+    padding: 1rem 2rem;
+    text-align: center;
+    mix-blend-mode: screen;
+}
+
+.about .row .content{
+    flex: 1 1 40rem;
+}
+
+.about .row .content h3{
+font-size: 3rem;
+color: #333;
+}
+
+.about .row .content p{
+    font-size: 1.5rem;
+    color: #999;
+    padding: 5rem 0;
+    padding-top: 1rem;
+    line-height: 1.5;
+    }
+
+
+
+.icons-conta {
+    background: #eee;
+    display: flex;
+    flex-wrap: wrap ;
+    gap: 1.5rem;
+    padding-top: 5rep;
+    padding-bottom: 5rem;
+
+}
+
+.icons-conta .icon{
+    background: #fff;
+    border: 1rem solid rgba(0,0,0,.1 ) ;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    flex: 1 1 25rem;
+}
+
+.icons-conta .icon img{
+    height: 5rem;
+    margin-right: 2rem;
+}
+
+.icons-conta .icon h3{
+    color: #333;
+    padding-bottom: .5rem;
+    font-size: 1.5rem;
+}
+
+.icons-conta .icon span{
+    color: #555;
+    font-size: 1.3rem;
+}
+
+
+
+
+
+
+.products .box-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+.product-item.visible {
+    display: block; /* Hiển thị sản phẩm khi nó có lớp 'visible' */
+}
+
+.product-button{
+    text-align: center;
+}
+#loadMore {
+    display: inline-block;
+ 
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    font-size: 12px;
+}
+#showLess{
+    display: none;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.products{ 
+    padding-top:10px;  
+}
+
+.product-item{
+    flex:20%;
+    max-width: 24%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    text-align: center;
+    display: none;
+    
+}
+.product-item:hover {
+    border: 1px solid #ccc; 
+    
+}
+
+.product-item img{
+    max-width: 100%;
+    height: auto;
+}
+
+.product-price{
+    color: #cf2c20;
+}
+.product-name{
+    color: #333;
+}
+.product-brand{
+    color: #333;
+}
+#loadMore {
+    margin: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+/*footer*/
+
+.footer__heading {
+    padding: 32px 0 0 0 ;
+    margin:10px 0;
+    
+}
+.footer-list {
+    list-style: none;
+    padding-left: 0;
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin: 0;
+}
+.footer__color {
+    width:100%;
+    background-color: var(--primery-color);
+    margin:auto;
+    height:5px;
+}
+.footer-item {
+    padding : 4px 0;
+    
+    font-size: 1.2rem;
+}
+.footer-item__link {
+    text-decoration: none;
+    color: var(--text-color);
+}
+.footer-item__link:hover {
+    color:#cf2c20
+}
+.footer-item__link--follow{
+    display: flex;
+    align-items: center;
+}
+.footer-item__link--icon{
+    padding-right:5px;
+    font-size: 1.4rem;
+}
+.footer__download--code {
+    display: flex;
+    align-items: center;
+
+}
+.footer__download-qr {
+    width:35%;
+    margin-left: -4px;;
+}
+.footer__download-app-img {
+    width:80px;
+    padding :5px 10px;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+}
+.footer__contact{
+    width:100%;
+    padding : 50px 0 25px;
+}
+.footer__text {
+    display:block;
+    margin:auto;
+    padding :3px 0;
+    text-align: center;
+}
+html {
+    font-size :62.5%;
+    line-height:1.6rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+/* responsive */
+.grid {
+    width:1200px;
+    max-width:100%;
+    margin:0 auto;
+    
+}
+.grid__row {
+    display:flex;
+    flex-wrap: wrap;
+    margin-left:-5px;
+    margin-right:-5px;
+}
+
+.grid__column-2-4 {
+    padding-left:5px;
+    padding-right:5px;
+    width:20%;
+}
+/**/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media(max-width:991px){
+    html{
+        font-size: 55%;
+    }
+
+    header{
+        padding:2rem;
+    }
+
+    section{
+        padding:2rem;
+    }
+
+    .home {
+        background-position:left ;
+    }
+}
+
+@media(max-width:768px){
+    header .fa-bars{
+        display: block;
+    }
+
+    header .navbar{
+        position: absolute ;
+        top: 100%; left: 0; right: 0;
+        background: #eee;
+        border-top: .1rem solid rgba(0,0,0,.1 );
+        clip-path: polygon(0 0, 100% 0, 100% 0,0 0);
+    }
+
+    header #toggler:checked ~ .navbar{
+        clip-path: polygon(0 0, 100% 0, 100% 100%,0 100%);
+    }
+
+    header .navbar a{
+        margin: 1.5rem;
+        padding: 1.5rem;
+        background:#fff ;
+        border: 1rem solid rgba(0,0,0,.1 );
+        display: block;
+    }
+
+    .home .content h3{
+        font-size: 5rem;
+    }
+
+    .home .content spam{
+        font-size: 3rem;
+    }
+
+    .icons-conta .icon h3{    
+        font-size: 2rem;
+    }
+    
+    .icons-conta .icon span{
+        font-size: 1.7rem;
+    }
+}
+
+@media(max-width:450px){
+    html{
+        font-size: 50%;
+    }   
+
+    .heading {
+        font-size: 3rem;
+    }
+}
+
+@media(max-width: 650px ){
+    .content{
+        font-size: 1.5rem;
+        padding:1.5rem;
+        
+    }
+}
+
+
+
+
+
+
+
+
+

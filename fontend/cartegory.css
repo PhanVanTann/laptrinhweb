@@ -1,0 +1,117 @@
+
+.cartegory{
+    display: flex;
+
+}
+
+
+/*cartegory_left*/
+.cartegory_left{
+    flex:25%;
+   
+}
+.cartegory_left input[type="checkbox"]{
+    width: 13px; /* Đặt chiều rộng */
+    height: 13px; /* Đặt chiều cao */
+    font-size: 10px;    
+    border-radius: 50%; /* Biến checkbox thành hình tròn */
+    border: 2px solid #b22222; /* Tùy chọn: Thêm viền để dễ nhận biết */
+    appearance: none; /* Xóa bỏ kiểu mặc định của checkbox */
+    -webkit-appearance: none; /* Để hỗ trợ các trình duyệt webkit */
+    cursor: pointer; /* Thêm con trỏ pointer để chỉ ra rằng có thể nhấp */
+    margin-right: 3px;
+}
+.cartegory_left input[type="checkbox"]:checked {
+    background-color: #b22222; /* Đổi màu nền khi checkbox được chọn */
+}
+.cartegory_left h2{
+    font-size: 20px;
+    margin-bottom: 15px;
+    margin-top: 20px;
+}
+.cartegory_left ul{
+    list-style-type: none;
+    font-size: 15px;
+    
+    
+}
+.cartegory_left li{
+    padding: 5px;
+}
+
+.cartegory_left input[type="number"]{
+    border: 2px solid #b22222;
+    width: 45%;
+    height: 40px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.cartegory_left_price button {
+    border: 2px solid #b22222;
+    background-color: #b22222;
+    color: white;
+    width: calc(2 * 45% + 5%); /* Tính toán chiều rộng dựa trên input width và margin */
+    height: 34px; /* Cùng chiều cao với input */
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.cartegory_left_price button:hover{
+    background-color: #6e1515;
+}
+
+
+
+
+
+
+
+
+/*cartegory_right_top*/
+.cartegory_right{
+    flex:75%;
+}
+
+.cartegory_right_top{
+    font-size: 20px;
+}
+
+
+.cartegory_right_top a{
+    margin-right:10px;
+    padding: 20px;
+    color: black;
+    width: 20px;
+    height: 100px;
+    border: none;
+    line-height: 3;
+
+}
+.cartegory_right_top a:hover{
+    border: 2px solid #b22222;
+    border-top: none;
+    transition-delay: 0s;
+}
+
+
+/*cartegory_right_center*/
+.cartegory_right_center {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+/*cartegory_right_bottom*/
+.cartegory_right_bottom {
+    text-align: center;
+}
+.cartegory_right_bottom a{
+    font-size: 16px; 
+    padding: 10px; 
+    color:black
+    
+}
+
+.cartegory_right_bottom a:hover {
+    color:#b22222; /* Màu chữ khi di chuột qua */
+}

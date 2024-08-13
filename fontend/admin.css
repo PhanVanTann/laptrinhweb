@@ -1,0 +1,170 @@
+.admin{
+    display: flex;
+    gap: 30px;
+}
+
+/*admin_left*/
+.admin_left{
+    flex: 1;
+}
+.admin_left h2{
+    font-size: 17px;
+    line-height: 1.8;
+}
+.admin_left li{
+    list-style: none;
+    margin: 20px 0;
+    padding: 5px;
+    font-size: 16px;
+    line-height: 1.8;
+    
+}
+.admin_left a{
+    color: #333;
+}
+.admin_left li:hover{
+    border:2px solid#020000;
+    border-top: none;
+    border-right: none;
+    
+}
+
+.admin_left_img{
+    text-align: center;
+}
+.admin_left_img img{
+    width: 50%;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.admin_left_manageadmin{
+    padding: 5px;
+    
+}
+
+/*admin_right*/
+.admin_right{
+    flex: 3;
+}
+/*addCartegory*/
+.admin_right_addCartegory{
+    text-align: center;
+    font-size: 15px;
+    padding: 20px;
+}
+.admin_right_addCartegory h2{
+    margin-bottom: 50px;
+}
+.admin_right_addCartegory input{
+    margin-top: 10px;
+    padding: 20px;
+    border-bottom: 2px solid #333;
+}
+
+.admin_right_addCartegory button{
+    cursor: pointer;
+    background: none;
+    padding: 15px;   
+    margin-left: 20px;
+}
+.admin_right_addCartegory button:hover{
+    border: 2px solid #b22222;
+    color: #b22222;
+}
+/*listCartegory*/
+.admin_right_listCartegory {
+    font-size: 15px;
+    text-align: center;
+    margin: 30px;
+}
+
+.admin_right_listCartegory table {
+    border-collapse: collapse; /* Đảm bảo viền hiển thị đúng cách */
+    width: 100%; /* Hoặc kích thước khác phù hợp */
+    margin: 40px;
+}
+.admin_right_listCartegory table tr{
+    border-bottom:2px solid #333 ;
+    text-align: center;
+   
+}
+
+.admin_right_listCartegory table td{
+    padding: 20px;
+}
+/*addProduct*/
+.admin_right_addProduct {
+    font-size: 15px;
+    margin: 30px;
+}
+.admin_right_addProduct h2{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.admin_right_addProduct input{
+    display: block;
+    width: 100%;
+    border-bottom: 2px solid #333;
+    margin: 20px;
+}
+.admin_right_addProduct input[type="file"]{
+    border: none;
+    width: 20%;
+}
+
+.admin_right_addProduct select{
+    display: block;
+    margin: 20px;
+    width: 30%;
+    text-align: center;
+    border-bottom: 2px solid #333;
+}
+
+.admin_right_addProduct textarea{
+    display: block;
+    margin: 20px;
+    width: 30%;
+    text-align: center;
+    border: 2px solid #333;
+   
+}
+
+.admin_right_addProduct button{
+    cursor: pointer;
+    background: none;
+    padding: 15px;   
+    margin-left: 20px;
+    border:2px solid #333;
+}
+.admin_right_addProduct button:hover{
+    border: 2px solid #b22222;
+    color: #b22222;
+}
+
+/*listProduct*/
+.admin_right_listProduct {
+    font-size: 15px;
+    text-align: center;
+    margin: 30px;
+}
+.admin_right_listProduct {
+    font-size: 15px;
+    text-align: center;
+    margin: 30px;
+}
+
+.admin_right_listProduct table {
+    border-collapse: collapse; /* Đảm bảo viền hiển thị đúng cách */
+    width: 100%; /* Hoặc kích thước khác phù hợp */
+    margin: 40px;
+}
+.admin_right_listProduct table tr{
+    border-bottom:2px solid #333 ;
+    text-align: center;
+   
+}
+.admin_right_listProduct table td{
+    padding: 20px;
+}
