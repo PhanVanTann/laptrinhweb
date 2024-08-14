@@ -1,27 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
-    let changePasswordButton = document.getElementById('changePasswordButton');
-    let modal = document.getElementById('changePasswordModal');
-    let span = document.getElementsByClassName('close')[0];
 
-    // Hiển thị modal khi nhấp vào nút
-    changePasswordButton.onclick = function () {
-        modal.style.display = 'block';
-    }
-
-    // Đóng modal khi nhấp vào dấu X
-    span.onclick = function () {
-        modal.style.display = 'none';
-    }
-
-    // Đóng modal khi nhấp ra ngoài modal
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = 'none';
-        }
-    }
-
-
-});
 
 document.addEventListener("DOMContentLoaded", function() {
     var editButton = document.getElementById("editButton");

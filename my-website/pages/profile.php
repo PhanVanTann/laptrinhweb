@@ -17,9 +17,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $phone = $_POST['phone'];
     $email = $_POST['email'];
     $address = $_POST['address'];
+    $passwords = $_POST['passwords'];
 
     $profile = new Profile();
-    $result = $profile->update_profile($userId, $fullname, $phone,$email,$address);
+    $result = $profile->update_profile($userId, $fullname, $phone,$email,$address,$passwords);
 }
 
 $profile = new profile; 
@@ -40,10 +41,10 @@ if($show_profile){
         <hr>
         <div  class="profile_left_manageprofile">
             <h2>Quản Lý Thông Tin Cá Nhân</h2>
-            <ul>
-                <li><a href="#account">Tài Khoản Và Mật Khẩu</a></li>
-                <li><a href="#information">Thông Tin Của Bạn</a></li>
-            </ul>
+        
+                
+                <li>Thông Tin Của Bạn</li>
+            
         </div>
         <?php if ($isAdmin): ?>
         <div class="profile_left_manageadmin">
@@ -55,34 +56,11 @@ if($show_profile){
     <div class="profile_right">
         <div class="profile_right_manager">
             <hr>
-                <div class="profile_right_manageraccount" id="account">                 
-                    <form action="">         
-                        <h2>Tài Khoản Mật Khẩu</h2>              
-                        <label for="">Email:</label>
-                        <input type="email" value="<?php echo $result['email'] ?>" readonly>
-                        <label>Mật Khẩu:</label>
-                        <input type="password" value="<?php echo $result['passwords'] ?>" readonly>
-                        <button type="button" id="changePasswordButton">Thay Đổi Mật Khẩu</button>
-                    </form>
-                
-                </div>
-                <div id="changePasswordModal" class="modal">
-                        <div class="modal-content">
-                            <span class="close">&times;</span>
-                            <h2>Thay Đổi Mật Khẩu</h2>
-                            <form id="changePasswordForm">
-                                <label for="">Nhập Mật Khẩu Cũ:</label>
-                                <input type="password"  placeholder="Nhập Mật khẩu cũ">
-                                <label>Nhập Mật Khẩu Mới:</label>
-                                <input type="password"  placeholder="Nhập Mật Khẩu mới">
-                                <button type="submit">Thay Đổi</button>
-                            </form>
-                        </div>
-                </div>
+                   
 
                 <div class="profile_right_managerinformation" id="information">
                     <form class="form_profile" action="" method="post">
-                        <h2>Thông Tin</h2>
+                        <h2>Thông Tin Của Bạn</h2>
                         <label for="">Họ Và Tên:</label>
                         <input type="text" name="fullname" id="name" value="<?php echo $result['fullname'] ?>" readonly>
                         <label for="">Số Điện Thoại:</label>
@@ -91,6 +69,8 @@ if($show_profile){
                         <input type="email" name="email" id="email" value="<?php echo $result['email'] ?>"  readonly>                     
                         <label for="">Địa Chỉ Nhận Hàng:</label>
                         <input type="text" name="address" id="address" value="<?php echo $result['deliveryaddress'] ?>"  readonly>
+                        <label>Mật Khẩu:</label>
+                        <input type="password" name="passwords" value="<?php echo $result['passwords'] ?>" readonly>
                         <button type="button" id="editButton">Sửa</button>
                         <button type="submit" id="saveButton" style="display:none;" >Lưu</button>
                     </form>

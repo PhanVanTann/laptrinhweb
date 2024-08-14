@@ -7,6 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const increaseBtn = document.getElementById('increase-btn');
     const quantityInput = document.getElementById('quantity-input');
 
+    // Kiểm tra xem phần tử có tồn tại không
+    if (!quantityInput || !decreaseBtn || !increaseBtn) {
+        console.error('Một hoặc nhiều phần tử không tồn tại.');
+        return;
+    }
+
     let quantity = parseInt(quantityInput.value);
 
     decreaseBtn.addEventListener('click', () => {
@@ -21,4 +27,3 @@ document.addEventListener('DOMContentLoaded', () => {
         quantityInput.value = quantity;
     });
 });
-

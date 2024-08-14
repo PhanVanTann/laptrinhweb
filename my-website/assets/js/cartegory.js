@@ -2,6 +2,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const productsPerPage = 20;
     const productList = document.querySelector('.cartegory_right_center');
     const pagination = document.getElementById('pagination');
+
+    if (!productList) {
+        console.error('Phần tử với class "cartegory_right_center" không tìm thấy.');
+        return;
+    }
+
+    if (!pagination) {
+        console.error('Phần tử với ID "pagination" không tìm thấy.');
+        return;
+    }
+
     const products = Array.from(productList.querySelectorAll('.product-item'));
 
     function renderProducts(page) {

@@ -14,22 +14,14 @@ class profile {
         $types = "i"; // i: integer
         return $this->db->select($query, $params, $types);
     }
-    
 
-   public function update_profile($userId, $fullname, $phone,$email, $address) {
-    $query = "UPDATE tbl_register SET fullname = ?, phone = ?,email=?, deliveryaddress = ? WHERE user_id = ?";
-    $params = [$fullname, $phone,$email, $address, $userId];
-    $types = "ssssi"; // s: string, i: integer
+
+   public function update_profile($userId, $fullname, $phone,$email, $address,$passwords) {
+    $query = "UPDATE tbl_register SET fullname = ?, phone = ?,email=?, deliveryaddress = ?, passwords=? WHERE user_id = ?";
+    $params = [$fullname, $phone,$email, $address,$passwords, $userId];
+    $types = "sssssi"; // s: string, i: integer
     return $this->db->update($query, $params, $types);
     }
 
-    public function update_password($userId,$passwords){
-        $query = "UPDATE tbl_register SET passwords=? WHERE user_id=?";
-        $params = [$passwords,$userId];
-        $type = "si";
-        return $this->db->update($query,$params,$type);
-    }
-
-  
 }
 ?>
