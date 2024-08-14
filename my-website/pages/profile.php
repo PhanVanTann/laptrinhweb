@@ -9,23 +9,6 @@ $userRole = $_SESSION['roles'] ?? 0; // Mặc định là 0 nếu không có gi�
 
 // Kiểm tra nếu người dùng là admin
 $isAdmin = $userRole == 1;
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['oldPassword']) && isset($_POST['newPassword'])) {
-        $userId = $_SESSION['user_id'];
-        $oldPassword = $_POST['oldPassword'];
-        $newPassword = $_POST['newPassword'];
-
-        // Kiểm tra xem mật khẩu cũ có khớp với mật khẩu hiện tại không
-        if ($result['passwords'] === $oldPassword) {
-            // Cập nhật mật khẩu mới
-            $profile = new Profile();
-            $profile->update_password($userId, $newPassword);
-            echo "Mật khẩu đã được cập nhật thành công!";
-        } else {
-            echo "Mật khẩu cũ không đúng!";
-        }
-    }
-}
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -40,7 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $profile = new profile; 
-$show_profile = $profile->show_profile();
+$userId = $_SESSION['user_id'];
+$show_profile = $profile->show_profile($userId);
 $result = null;
 if($show_profile){
     $result = $show_profile->fetch_assoc();
