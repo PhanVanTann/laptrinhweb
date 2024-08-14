@@ -1,5 +1,18 @@
 
-<?php include "../includes/header.php"?>
+<?php include "../includes/header.php";
+include "../class/adminclass.php";
+?>
+
+<?php 
+$cartegory = new admin;
+if($_SERVER['REQUEST_METHOD']==='POST'){
+    $cartegory_name=$_POST['cartegory_name'];
+    $insert_cartegory = $cartegory -> insert_cartegory($cartegory_name);
+}
+?>
+
+
+
 <section class="icons-conta"> </section>
 <section class="admin">
     <div class="admin_left">
@@ -16,7 +29,7 @@
                 <li><a id="addProduct" href="#">Thêm Sản Phẩm</a></li>
                 <li><a id="listProduct" href="#">Danh Sách Sản Phẩm</a></li>
             </ul> 
-            <h2><a href="profile.php">Quản Lý Thông Tin Cá Nhân</a></h2>           
+            <h2><a href="../pages/profile.php">Quản Lý Thông Tin Cá Nhân</a></h2>           
         </div>        
     </div>
 

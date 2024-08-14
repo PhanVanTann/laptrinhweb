@@ -557,7 +557,7 @@
     </div>
     <div class="product-button">
         <button id="loadMore">Xem thêm</button>       
-        <button id="showLess">Thu gọn</button>
+        <button id="showLess" >Thu gọn</button>
     </div>
 
         <script>
