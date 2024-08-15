@@ -1,5 +1,13 @@
 
-<?php include "../includes/header.php" ?>
+<?php include "../includes/header.php" ;
+include "../class/adminclass.php";
+?>
+<?php
+
+$product = new admin;
+$show_product = $product->show_product();
+
+?>
 <section class="icons-conta"></section>
     <section class="cartegory">
         <div class="cartegory_left">
@@ -47,18 +55,25 @@
             </section>
             <hr>
             <div class="cartegory_right_center">
-                
+                        <?php 
+                            
+                            if($show_product){
+                            while($result = $show_product->fetch_assoc()){
+
+                            
+                        ?>
                     <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
+                    <a href="product.php?product_id=<?php echo $result['product_id'] ?>">
+                        <img src="../uploads/uploads_product/<?php echo $result['product_img'] ?>">
+                        <div class="product-info">
+                            <h3 class="product-name"><?php echo $result['product_name']?></h3>
+                            <br>
+                            <h3 class="product-brand"><?php echo $result['product_trademark']?></h3>                     
+                            <h1 class="product-price"><?php echo number_format($result['product_price'],0,',','.' );?> đ</h1>
+                        </div>
                         </a>
                     </div>
-
+                    <?php  }}?>
                     
                     <div class="product-item">
                         <a href="product.php">
@@ -383,6 +398,7 @@
 
                         
             </div>
+            <script src="../assets/js/cartegory.js"></script> 
             <hr>
             <section class="cartegory_right_bottom" id="pagination">
                

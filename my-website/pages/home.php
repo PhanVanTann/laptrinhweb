@@ -1,6 +1,13 @@
 
-<?php include "../includes/header.php" ?>
+<?php include "../includes/header.php" ;
+    include "../class/adminclass.php";
+?>
+<?php
 
+$product = new admin;
+$show_product = $product->show_product();
+
+?>
 <body>
 <section class ="home" id="home">
         <div class="content">
@@ -8,9 +15,9 @@
         <script>
             // Mảng chứa các URL hình nền
             const backgrounds = [
-                'url("../assets/img/web_slide_pc_1920_x_530_4f2d1b7d0f694e6cbb642870c1c9818f.webp")',
-                'url("../assets/img/web_slide_pc_1920_x_530_9a7926617f0b4191906882966acf46e0.webp")',
-                'url("../assets/img/web_slide_pc_1920_x_530_dad5bb23a5224830b5e8338479e727a3.webp")',
+                'url("../assets/img/background.jpg")',
+                'url("../assets/img/background1.jpg")',
+                'url("../assets/img/background2.jpg")',
             ];
         
             let currentIndex = 0;
@@ -43,10 +50,11 @@
             <div>            
                 <h3>Cosmetics</h3> 
                 <spam>Safety and quality</spam>
-                <p>We believe that every woman deserves the most natural and radiant beauty. At [Website Name],
-                     we bring you cosmetic products that are safe, effective, and skin-friendly.
+                <p>Safety and Quality
+                We believe that every person deserves clear and stylish vision. At Eyewear ,
+                 we bring you eyewear products that are safe, durable, and designed for comfort.
                 </p>
-                <a href ="#products" class = "btn">shop now</a>
+                <a href ="#products" class = "shopnow">shop now</a>
             </div>
 
         </div>
@@ -56,20 +64,23 @@
         <h1 class="heading"><span> about </span> us </h1>
         <div class="row">
             <div class="img-container">
-                <img src="../assets/img/bestsale.png" ></img>
+                <img src="../assets/img/best.webp" ></img>
                 <h3>best sellers</h3>
             </div>
 
             <div class="content">
                 <h3>why choose us? </h3>
-                <p>Premium Quality Products: We offer a curated selection of high-quality cosmetics that are safe, effective, and cruelty-free. 
-                    Our products are formulated with the finest ingredients to ensure the best results.
+                <p>Premium Quality Eyewear:
+                We offer a curated selection of high-quality eyewear that is durable, stylish, and comfortable.
+                 Our products are made with premium materials to ensure long-lasting performance and clear vision.
                 </p>
-                <p>Expertly Crafted Formulas: Our products are developed by beauty experts and dermatologists to cater to all skin types and tones.
-                     We’re committed to helping you achieve the look you desire with formulas that work.</p>
+                <p>Expertly Crafted Designs:
+                Our eyewear is developed by optical experts and designers to cater to all face shapes and personal styles.
+                 We’re committed to helping you achieve the perfect look with frames that fit and lenses that perform.</p>
                 <p>
-                    Sustainable Beauty: We are committed to sustainable practices.
-                     Our packaging is eco-friendly, and we prioritize products that are kind to both your skin and the environment.
+                Sustainable Vision:
+                We are committed to sustainable practices. 
+                Our packaging is eco-friendly, and we prioritize products that are both good for your eyes and kind to the environment.
                 </p>
        
             </div>
@@ -79,7 +90,7 @@
 
 <section class="icons-conta">
     <div class="icon">
-        <img src="anhr/free-shipping.png" alt="">
+        <img src="../assets/img/free-shipping.png" alt="">
         <div class="info">
             <h3>free dilivery</h3>
             <span>on all orders</span>
@@ -87,7 +98,7 @@
     </div>
     
     <div class="icon">
-        <img src="anhr/money-bag (1).png" alt="">
+        <img src="../assets/img/money-bag (1).png" alt="">
         <div class="info">
             <h3>10 days return</h3>
             <span>moneyback guarantee</span>
@@ -95,7 +106,7 @@
     </div>
 
     <div class="icon">
-        <img src="anhr/gift-box.png" alt="">
+        <img src="../assets/img/gift-box.png" alt="">
         <div class="info">
             <h3>offer & gifts</h3>
             <span>on all orders</span>
@@ -103,7 +114,7 @@
     </div>
 
     <div class="icon">
-        <img src="anhr/credit-card (1).png" alt="">
+        <img src="../assets/img/credit-card (1).png" alt="">
         <div class="info">
             <h3>secure paymens</h3>
             <span>protected by payman</span>
@@ -114,18 +125,28 @@
 <section class="products" id="products">
 
     <h1 class="heading"> latest <span>products</span></h1>
-   
+        
     <div class="box-container">
+            <?php 
+                    
+                    if($show_product){
+                    while($result = $show_product->fetch_assoc()){
+
+                    
+            ?>
         <div class="product-item">
-            <a href="product.php">
-                <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
+        
+            <a href="product.php?product_id=<?php echo $result['product_id'] ?>">
+                <img src="../uploads/uploads_product/<?php echo $result['product_img'] ?>">
                 <div class="product-info">
-                    <h2 class="product-brand">L'Oreal</h2>    
-                    <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                    <h1 class="product-price">148.000 đ</h1>
+                    <h3 class="product-name"><?php echo $result['product_name']?></h3>
+                    <br>
+                    <h3 class="product-brand"><?php echo $result['product_trademark']?></h3>                     
+                    <h1 class="product-price"><?php echo number_format($result['product_price'],0,',','.' );?> đ</h1>
                 </div>
             </a>
         </div>
+        <?php  }}?>
     
 
     
@@ -555,6 +576,7 @@
 
        
     </div>
+    <script src="../assets/js/product.js"></script> 
     <div class="product-button">
         <button id="loadMore">Xem thêm</button>       
         <button id="showLess" >Thu gọn</button>

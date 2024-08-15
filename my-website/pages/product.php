@@ -1,10 +1,22 @@
 
 
-   <?php include "../includes/header.php"?>
-   <?php 
-    session_start();
-    $userRole = $_SESSION['roles'] ?? 0;
-    $isUser = $userRole == 0;
+<?php include "../includes/header.php";
+ include "../class/adminclass.php";
+?>
+<?php 
+
+$userRole = $_SESSION['roles'] ?? 0;
+$isUser = $userRole == 0;
+
+if (isset($_GET['product_id'])) {
+    $product_id = intval($_GET['product_id']); }
+$product = new admin;
+$show_productid = $product->show_productid($product_id);
+
+if($show_productid){
+    $result = $show_productid->fetch_assoc();
+    
+}
 ?>
     <section class="icons-conta"> </section>
     
@@ -12,22 +24,22 @@
         
         <div class="product_decs_left">
             <div class="product_decs_left_mainImg">
-                <img id="mainImage" src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" >
+                <img id="mainImage" src="../uploads/uploads_product/<?php echo $result['product_img'] ?>" >
             </div>
             <div class="product_decs_left_Imgsmail">
-                    <img src="../assets/img/kemchongnag1.jpg" alt="Thumbnail 1" onclick="changeImage('../assets/img/kemchongnag1.jpg')">
-                    <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="Thumbnail 2" onclick="changeImage('https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png')">
-                    <img src="../assets/img/kemchongnag1.jpg" alt="Thumbnail 1" onclick="changeImage('../assets/img/kemchongnag1.jpg')">
-                    <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="Thumbnail 4" onclick="changeImage('https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png')">
+                    <img src="../uploads/uploads_product/<?php echo $result['product_img_mt1'] ?>" alt="Thumbnail 1" onclick="changeImage('../uploads/uploads_product/<?php echo $result['product_img_mt1'] ?>')">
+                    <img src="../uploads/uploads_product/<?php echo $result['product_img_mt2'] ?>" alt="Thumbnail 1" onclick="changeImage('../uploads/uploads_product/<?php echo $result['product_img_mt2'] ?>')">
+                    <img src="../uploads/uploads_product/<?php echo $result['product_img_mt3'] ?>" alt="Thumbnail 1" onclick="changeImage('../uploads/uploads_product/<?php echo $result['product_img_mt3'] ?>')">
+                    <img src="../uploads/uploads_product/<?php echo $result['product_img_mt4'] ?>" alt="Thumbnail 1" onclick="changeImage('../uploads/uploads_product/<?php echo $result['product_img_mt4'] ?>')">
             </div>
         </div>
 
         <div class="product_decs_right">
             <hr>
             <div class="product_decs_right_name">
-                <h2>[V1 - V12] Son Kem Lì Merzy The First Velvet Tint 4.5g </h2>
+                <h2><?php echo $result['product_name'] ?> </h2>
             </div>
-            <div class="product_decs_right_price">200.000đ</div>
+            <div class="product_decs_right_price"><?php echo number_format($result['product_price'],0,',','.' );?> đ</div>
             
             <div class="product_decs_right_quantity">
                 <label for="">Số Lượng:</label>
@@ -38,19 +50,15 @@
 
             <div class="product_decs_right_decs">
                 <h3>Chi tiết sản phẩm</h3>
-                        <p>Kem Chống Nắng La Roche-Posay Anthelios UV Mune 400 Oil Control Gel-Cream SPF50+ giúp kiểm soát dầu và bảo vệ da khỏi tác hại của tia UV. Phù hợp với làn da dầu, dễ bị mụn.</p>
-                        <ul>
-                            <li>Dung tích: 50ml</li>
-                            <li>Loại da: Da dầu, da mụn</li>
-                            <li>Xuất xứ: Pháp</li>
-                            <li>Công dụng: Kiểm soát dầu, bảo vệ da khỏi tia UV</li>
-                        </ul>
+                        <p>- <?php echo $result['product_desc'] ?></p>
+                        
             </div>
             <?php if ($isUser): ?>
             <div class="product_decs_right_buy">
                 <button>Thêm vào giỏ hàng</button>
                 <button>Mua ngay NowFree 2H</button>
             </div>
+           
             <?php endif; ?>
             <hr>
         </div>

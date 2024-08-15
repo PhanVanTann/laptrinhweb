@@ -21,7 +21,7 @@ $show_cartegory = $cartegory->show_cartegory();
                         <th>Tên Sản Phẩm</th>
                         <th>ID Sản Phẩm</th>
                         <th>ID Loại Sản Phẩm</th>
-                        <td>Giá</td>
+                        <th>Giá</th>
                         <th>Tùy Chọn</th>
                     </tr>
                     <?php

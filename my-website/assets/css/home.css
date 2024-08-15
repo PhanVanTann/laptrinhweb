@@ -15,12 +15,25 @@
 .content{
     font-size: 2rem;
     color:black;
-    
+  
 }
-.content div{
-    background-color: rgba(255, 255, 255, 0.8);
+.content div{  
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 50px;
     padding: 30px;
+}
+.content .shopnow{
+    display: inline-block;
+    margin-top: 1rem;
+    border-radius: 5rem;
+    background-color: rgba(255, 100, 100, 0.2);
+    color: #fff;
+    padding: 1.5rem 1rem;
+    cursor: pointer;
+    font-size: 1.7rem;
+}
+.content .shopnow:hover{
+    background-color: #cf2c20;
 }
 
 
@@ -30,9 +43,9 @@
 }
 
 .home .content h3{
-    margin-bottom:5px ;
+    margin-bottom:10px ;
     font-size: 6rem;
-    color: #333;
+    color: #ffffffbd;
 }
 
 .home .content spam{
@@ -44,7 +57,7 @@
 
 .home .content p{
     font-size: 1.5rem;
-    color: #333;
+    color:  #F0F0F0;
     padding: 1rem 0;
     line-height: 1.5;
 }
@@ -91,6 +104,8 @@
 font-size: 3rem;
 color: #333;
 }
+
+
 
 .about .row .content p{
     font-size: 1.5rem;
@@ -206,6 +221,7 @@ color: #333;
 }
 
 .product-price{
+    margin-top: 5px;
     color: #cf2c20;
 }
 .product-name{

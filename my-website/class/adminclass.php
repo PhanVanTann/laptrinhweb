@@ -130,6 +130,11 @@ class admin {
         $result = $this->db->select($query);
         return $result;
     }
+    public function show_productid($product_id){
+        $query = "SELECT * FROM tbl_product WHERE product_id = ?";       
+        $result = $this->db->select($query, [$product_id], "i"); 
+        return $result;
+    }
     public function delete_product($product_id){
         $query = "DELETE FROM tbl_product WHERE product_id = ?";
         $params = [$product_id];

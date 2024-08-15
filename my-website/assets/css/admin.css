@@ -163,13 +163,18 @@
 .admin_right_listProduct table tr{
     border-bottom:2px solid #333 ;
     text-align: center;
+
    
 }
 .admin_right_listProduct table td{
     padding: 20px;
+    max-width: 100px;
+}
+.admin_right_listProduct table th{
+    padding-bottom: 10px;
 }
 .admin_right_listProduct img{
-    width: 150px;
+    width: 100px;
     padding:5px;
 
 } 

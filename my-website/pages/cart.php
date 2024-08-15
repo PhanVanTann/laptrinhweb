@@ -3,7 +3,7 @@
 <section class="cart">
     <div class="cart_left">
         <div class="cart_left_img">
-            <img src="anhr/gift.png">
+        <img src="../assets/img/avatar.png">
             <h3>Phan Van Tan</h3>
         </div>
         <hr>

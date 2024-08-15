@@ -15,12 +15,12 @@
     <link rel="stylesheet" href="../assets/css/cart.css">
     <link rel="stylesheet" href="../assets/css/admin.css">
 
-    <script src="../assets/js/cartegory.js"></script> 
+    
     <script src="../assets/js/home.js"></script> 
-    <script src="../assets/js/product.js"></script> 
-    <script src="../assets/js/profile.js"></script> 
-    <script src="../assets/js/cart.js"></script>
     <script src="../assets/js/admin.js"></script>
+    <script src="../assets/js/product.js"></script>
+    <script src="../assets/js/cart.js"></script>
+    
 </head>
 <?php 
 session_start();
@@ -31,7 +31,7 @@ $isUser = $userRole == 0;
         <input type="checkbox" name="" id="toggler">
        <label for="toggler" class="fas fa-bars"></label>
 
-        <a href="../pages/home.php" class="logo">Cosmetics <span>.</span></a>
+        <a href="../pages/home.php" class="logo">Eyewear <span>.</span></a>
 
         <nav class="navbar">
             <a href = "../pages/home.php">home</a>

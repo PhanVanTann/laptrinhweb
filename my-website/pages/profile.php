@@ -1,5 +1,5 @@
 <?php include "../includes/header.php";
-include "../class/profileclass.php"
+include "../class/profileclass.php";
 ?>
 <?php 
 session_start();
@@ -35,7 +35,7 @@ if($show_profile){
 <section class="profile">
     <div class="profile_left">
         <div class="profile_left_img">
-            <img src="anhr/gift.png">
+            <img src="../assets/img/avatar.png">
             <h3><?php echo $result['fullname'] ?></h3>
         </div>
         <hr>
@@ -80,6 +80,7 @@ if($show_profile){
                 
         </div>
     </div>
+    <script src="../assets/js/profile.js"></script> 
 </section>
     <section class="icons-conta"></section>
     <?php include "../includes/footer.php" ?>

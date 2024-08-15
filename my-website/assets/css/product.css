@@ -21,6 +21,7 @@
 
 .product_decs_left_Imgsmail{
     display: flex;
+    margin-top: 20px;
 }
 
 .product_decs_left_Imgsmail img{
@@ -97,3 +98,8 @@
 .product_decs_right_buy button:hover {
     background-color: #c6380c;
 }
+.product_decs_right_decs {
+    font-size: 15px;
+    line-height: 1.8;
+}
+    
