@@ -40,6 +40,6 @@ $show_cartegory = $cartegory->show_cartegory();
                 </table>
                 
             </div>
-
+            <hr>
             </section>     
             <?php include "../includes/footer.php" ?>

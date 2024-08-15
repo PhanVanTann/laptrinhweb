@@ -54,7 +54,7 @@ class admin {
         $product_price_new = $_POST['product_price_new'];
         $product_desc = $_POST['product_desc'];
     
-        $upload_dir = '../uploads/uploads_img/';
+        $upload_dir = '../uploads/uploads_product/';
         $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
         $uploaded_images = [];
 
@@ -124,6 +124,35 @@ class admin {
         header('Location: productlist.php');
     }
     
+
+    public function show_product() {
+        $query = "SELECT * FROM tbl_product ORDER BY product_id DESC";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function delete_product($product_id){
+        $query = "DELETE FROM tbl_product WHERE product_id = ?";
+        $params = [$product_id];
+        $types = "i";
+        $this->db->delete($query, $params, $types);      
+        header('location:productlist.php'); 
+    }
+    public function update_product($product_name, $product_id){
+        $query = "UPDATE tbl_product SET product_name = ? WHERE product_id = ?";
+        $params = [$product_name, $product_id];
+        $types = "si"; 
+        $this->db->update($query, $params, $types);
+        header('location:productlist.php');
+    }
+
+    public function get_product($product_id){
+        $query = "SELECT * FROM tbl_product WHERE product_id = ?";
+        $params = [$product_id];
+        $types = "i"; // "i" cho số nguyên (integer)
+        $result = $this->db->select($query, $params, $types);
+        return $result;
+    }
+
 
 }
 ?>

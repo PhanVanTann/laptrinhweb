@@ -168,3 +168,9 @@
 .admin_right_listProduct table td{
     padding: 20px;
 }
+.admin_right_listProduct img{
+    width: 150px;
+    padding:5px;
+
+} 
+

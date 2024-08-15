@@ -24,6 +24,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
                     <button type="submit">Thêm</button>
                 </form>
             </div>>
+            <hr>
                 
 </section>
     <section class="icons-conta"></section>

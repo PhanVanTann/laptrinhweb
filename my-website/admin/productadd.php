@@ -54,6 +54,6 @@ include "../class/adminclass.php";
                 </form>
             </div>
 
-
+            <hr>
 </section>     
             <?php include "../includes/footer.php" ?>

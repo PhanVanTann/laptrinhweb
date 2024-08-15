@@ -48,7 +48,7 @@ if($show_profile){
         </div>
         <?php if ($isAdmin): ?>
         <div class="profile_left_manageadmin">
-            <h2><a href="../admin/admin.php">Quản Lý Cửa Hàng</a> </h2>           
+            <h2><a href="../admin/cartegorylist.php">Quản Lý Cửa Hàng</a> </h2>           
         </div>
         <?php endif; ?>
         
