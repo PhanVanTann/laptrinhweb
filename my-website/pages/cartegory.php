@@ -7,6 +7,9 @@ include "../class/adminclass.php";
 $product = new admin;
 $show_product = $product->show_product();
 
+$trademark = new admin;
+$show_trademark = $trademark->show_trademark();
+
 ?>
 <section class="icons-conta"></section>
     <section class="cartegory">
@@ -25,11 +28,19 @@ $show_product = $product->show_product();
             <div class="cartegory_left_trademark">
                 <h2>trademark</h2>
                 <ul>
-                    <li><input type="checkbox"><label>Merzy</label></li>
+                <?php 
+                            
+                            if($show_trademark){
+                            while($results = $show_trademark->fetch_assoc()){
+
+                            
+                        ?>
+                    <li><input type="checkbox"><label><?php echo $results['product_trademark']?></label></li>
                     <li><input type="checkbox"><label>L'Olear</label></li>
                     <li><input type="checkbox"><label>DHC</label></li>
                     <li><input type="checkbox"><label>SVR</label></li>
                     <li><input type="checkbox"><label>3CE</label></li>
+                    <?php  }}?>
                 </ul>              
             </div>
 

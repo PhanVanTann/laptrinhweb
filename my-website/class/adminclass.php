@@ -120,7 +120,8 @@ class admin {
         $types = "sisddssssss"; // s: string, i: integer, d: double
     
         $this->db->insert($query, $params, $types);
-    
+        $product_id = $this->db->getInsertId();
+        $this->add_trademark($product_id, $product_trademark);
         header('Location: productlist.php');
     }
     
@@ -158,6 +159,19 @@ class admin {
         return $result;
     }
 
+    public function add_trademark($product_id, $product_trademark) {
+        // Chèn product_trademark vào bảng tbl_trademarks
+        $query = "INSERT INTO tbl_trademarks (product_id, product_trademark) VALUES (?, ?)";
+        $params = [$product_id, $product_trademark];
+        $types = "is"; // i: integer, s: string
+        $this->db->insert($query, $params, $types);
+    }
+
+    public function show_trademark(){
+        $query = "SELECT * FROM tbl_trademarks ORDER BY trademark_id DESC";
+        $result = $this->db->select($query);
+        return $result;
+    }
 
 }
 ?>

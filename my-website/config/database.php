@@ -90,6 +90,11 @@ class Database {
         }
         $stmt->close();
     }
+
+    //lấy id
+    public function getInsertId() {
+        return $this->connection->insert_id;
+    }
 }
 
 
