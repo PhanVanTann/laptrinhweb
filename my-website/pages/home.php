@@ -576,7 +576,7 @@ $show_product = $product->show_product();
 
        
     </div>
-    <script src="../assets/js/product.js"></script> 
+     
     <div class="product-button">
         <button id="loadMore">Xem thêm</button>       
         <button id="showLess" >Thu gọn</button>

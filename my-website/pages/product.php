@@ -19,7 +19,7 @@ if($show_productid){
 }
 ?>
     <section class="icons-conta"> </section>
-    
+   
     <section class="product_decs">
         
         <div class="product_decs_left">
@@ -62,10 +62,10 @@ if($show_productid){
             <?php endif; ?>
             <hr>
         </div>
-        
+        <script src="../assets/js/product.js"></script>
 
     </section>
-
+   
     <section class="icons-conta"> </section>
     <?php include "../includes/footer.php" ?>
    

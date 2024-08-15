@@ -4,11 +4,20 @@ include "../class/adminclass.php";
 ?>
 <?php
 
+
+
 $product = new admin;
-$show_product = $product->show_product();
+$show_product = $product->getFilteredProducts(
+    isset($_GET['category_id']) ? intval($_GET['category_id']) : null,
+    isset($_GET['trademark']) ? $_GET['trademark'] : null
+);
+
 
 $trademark = new admin;
 $show_trademark = $trademark->show_trademark();
+
+$cartegory = new admin;
+$show_cartegory = $cartegory->show_cartegory();
 
 ?>
 <section class="icons-conta"></section>
@@ -17,32 +26,43 @@ $show_trademark = $trademark->show_trademark();
             <div class="cartegory_left_cartegory">
                 <h2>cartegory</h2>
                 <ul>
-                    <li><input type="checkbox"><label>Kem Chống Nắng</label></li>
-                    <li><input type="checkbox"><label>Kem Dưỡng Da</label></li>
-                    <li><input type="checkbox"><label>Sửa Rửa Mặt</label></li>
-                    <li><input type="checkbox"><label>Son Môi</label></li>
-                    <li><input type="checkbox"><label>Mặt Nạ</label></li>
+                    <?php    
+                                if($show_cartegory){
+                                while($results = $show_cartegory->fetch_assoc()){
+
+                            ?>
+                    <li>
+                        <input type="checkbox" id="category_<?php echo $results['cartegory_id']; ?>"
+                            <?php echo (isset($_GET['category_id']) && $_GET['category_id'] == $results['cartegory_id']) ? 'checked' : ''; ?>
+                            data-url="?category_id=<?php echo $results['cartegory_id']; ?>">
+                        <label for="category_<?php echo $results['cartegory_id']; ?>">
+                            <?php echo htmlspecialchars($results['cartegory_name']); ?>
+                        </label>
+                    </li>
+
+
+
+                    
+                    <?php  }}?>
                 </ul>              
             </div>
 
             <div class="cartegory_left_trademark">
-                <h2>trademark</h2>
+                <h2>Thương hiệu</h2>
                 <ul>
-                <?php 
-                            
-                            if($show_trademark){
-                            while($results = $show_trademark->fetch_assoc()){
-
-                            
-                        ?>
-                    <li><input type="checkbox"><label><?php echo $results['product_trademark']?></label></li>
-                    <li><input type="checkbox"><label>L'Olear</label></li>
-                    <li><input type="checkbox"><label>DHC</label></li>
-                    <li><input type="checkbox"><label>SVR</label></li>
-                    <li><input type="checkbox"><label>3CE</label></li>
-                    <?php  }}?>
-                </ul>              
+                    <?php while($results = $show_trademark->fetch_assoc()) { ?>
+                        <li>
+                            <input type="checkbox" id="trademark_<?php echo $results['product_trademark']; ?>"
+                                <?php echo (isset($_GET['trademark']) && $_GET['trademark'] == $results['product_trademark']) ? 'checked' : ''; ?>
+                                data-url="?trademark=<?php echo urlencode($results['product_trademark']); ?>">
+                            <label for="trademark_<?php echo $results['product_trademark']; ?>">
+                                <?php echo htmlspecialchars($results['product_trademark']); ?>
+                            </label>
+                        </li>
+                    <?php } ?>
+                </ul>
             </div>
+
 
             <div class="cartegory_left_price">
                 <h2>Giá</h2>
@@ -60,8 +80,7 @@ $show_trademark = $trademark->show_trademark();
                 <nav>
                     <a href="#">giá Thấp</a>
                     <a href="#">giá Cao</a>
-                    <a href="#">Mới Nhất</a>
-                    <a href="#">Giảm Giá</a>
+                    
                 </nav>
             </section>
             <hr>
@@ -74,342 +93,20 @@ $show_trademark = $trademark->show_trademark();
                             
                         ?>
                     <div class="product-item">
-                    <a href="product.php?product_id=<?php echo $result['product_id'] ?>">
-                        <img src="../uploads/uploads_product/<?php echo $result['product_img'] ?>">
+                    <a href="product.php?product_id=<?php echo $result['product_id']; ?>">
+                        <img src="../uploads/uploads_product/<?php echo $result['product_img']; ?>" alt="Product Image">
                         <div class="product-info">
-                            <h3 class="product-name"><?php echo $result['product_name']?></h3>
-                            <br>
-                            <h3 class="product-brand"><?php echo $result['product_trademark']?></h3>                     
-                            <h1 class="product-price"><?php echo number_format($result['product_price'],0,',','.' );?> đ</h1>
+                            <h3 class="product-name"><?php echo htmlspecialchars($result['product_name']); ?></h3>
+                            <h3 class="product-brand"><?php echo htmlspecialchars($result['product_trademark']); ?></h3>
+                            <h1 class="product-price"><?php echo number_format($result['product_price'], 0, ',', '.'); ?> đ</h1>
                         </div>
-                        </a>
+                    </a>
                     </div>
                     <?php  }}?>
-                    
-                    <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
-                        </a>
-                    </div>
-
-
-                    <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
-                        </a>
-                    </div>
-
-
-                    <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
-                        </a>
-                    </div>
-
-
-                    <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
-                        </a>
-                    </div>
-
-
-                    <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
-                        </a>
-                    </div>
-
-
-                    <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
-                        </a>
-                    </div>
-
-
-                    <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
-                        </a>
-                    </div>
-
-
-                    <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
-                        </a>
-                    </div>
-
-
-                    <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
-                        </a>
-                    </div>
-
-
-                    <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
-                        </a>
-                    </div>
-
-
-                    
-
-
-                    <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="product-item">
-                        <a href="product.php">
-                            <img src="https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-205100137-1695896128_img_385x385_622873_fit_center.png" alt="L'Oreal">
-                            <div class="product-info">
-                                <h2 class="product-brand">L'Oreal</h2>    
-                                <h3 class="product-name">Nước Tẩy Trang L'Oreal Tươi Mát Cho Micellar Water 3-in-1 Refreshing Even</h3>
-                                <h1 class="product-price">148.000 đ</h1>
-                            </div>
-                        </a>
-                    </div>
-
-                        
+                             
             </div>
             <script src="../assets/js/cartegory.js"></script> 
+            
             <hr>
             <section class="cartegory_right_bottom" id="pagination">
                

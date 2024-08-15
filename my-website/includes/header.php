@@ -18,7 +18,7 @@
     
     <script src="../assets/js/home.js"></script> 
     <script src="../assets/js/admin.js"></script>
-    <script src="../assets/js/product.js"></script>
+   
     <script src="../assets/js/cart.js"></script>
     
 </head>

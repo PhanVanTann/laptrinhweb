@@ -173,5 +173,45 @@ class admin {
         return $result;
     }
 
+
+    public function getFilteredProducts($cartegory_id = null, $trademark = null) {
+        $query = "SELECT * FROM tbl_product WHERE 1=1"; // '1=1' để dễ dàng thêm điều kiện
+    
+        if ($cartegory_id) {
+            $query .= " AND cartegory_id = ?";
+        }
+    
+        if ($trademark) {
+            $query .= " AND product_trademark = ?";
+        }
+    
+        $query .= " ORDER BY product_id DESC"; // Sắp xếp kết quả để dễ đọc hơn
+    
+        $params = [];
+        $types = "";
+    
+        if ($cartegory_id) {
+            $params[] = $cartegory_id;
+            $types .= "i";
+        }
+    
+        if ($trademark) {
+            $params[] = $trademark;
+            $types .= "s";
+        }
+    
+        $result = $this->db->select($query, $params, $types);
+    
+        // Kiểm tra lỗi truy vấn
+        if ($result === false) {
+            die("Query failed.");
+        }
+    
+        return $result;
+    }
+    
+    
+    
+    
 }
 ?>
