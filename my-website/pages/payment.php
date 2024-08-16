@@ -33,7 +33,7 @@ $total_price = 0;
     <form action="process_payment.php" method="post">
         <div class="payment-form-group">
             <label for="name">Họ và Tên:</label>
-            <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($user_info['fullname']); ?>" readonly>
+            <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($user_info['fullname']); ?>" readonly   >
         </div>
 
         <div class="payment-form-group">

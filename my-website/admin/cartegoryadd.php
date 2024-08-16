@@ -21,7 +21,6 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
                 <h2>Thêm Loại Sản Phẩm</h2>
                 <form action="" method="POST">
                     <input name="cartegory_name" type="text" placeholder="Thêm Loại Sản Phẩm" >
-                    <br>
                     <button type="submit">Thêm</button>
                 </form>
             </div>

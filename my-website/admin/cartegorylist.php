@@ -14,7 +14,7 @@ $show_cartegory = $cartegory->show_cartegory();
                 <table>
                     <tr>
                         <th>STT</th>
-                        <th>ID</th>
+                        <th>ID Danh Mục</th>
                         <th>Danh Mục</th>
                         <th>Tùy Chọn</th>
                     </tr>

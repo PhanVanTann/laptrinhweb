@@ -2,18 +2,27 @@
 include "../includes/header.php";
 include "../class/adminclass.php";
 
-// Tạo đối tượng admin
+// Kiểm tra xem người dùng đã đăng nhập chưa
+if (!isset($_SESSION['user_id'])) {
+    header("Location:login.php");
+    exit();
+}
 
+// Tạo đối tượng admin
 $admin = new admin();
+$user_id = $_SESSION['user_id'];
+
+// Xử lý thao tác xóa sản phẩm khỏi giỏ hàng
 if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['product_id'])) {
     $product_id = intval($_GET['product_id']);
     $admin->delete_from_cart($product_id);
+    // Cập nhật giỏ hàng ngay sau khi xóa
     header('Location: cart.php');
     exit();
 }
-$cart_items = $admin->get_cart_items();
 
-
+// Lấy giỏ hàng từ cơ sở dữ liệu dựa trên user_id
+$cart_items = $admin->get_cart_items_by_user_id($user_id)->fetch_all(MYSQLI_ASSOC);
 
 ?>
 
@@ -32,6 +41,7 @@ $cart_items = $admin->get_cart_items();
     <div class="cart_right">
         <hr>
         <h2>Giỏ Hàng Của Bạn</h2>
+        <?php if (!empty($cart_items)): ?>
         <table>
             <tr>
                 <th>STT</th>
@@ -44,7 +54,7 @@ $cart_items = $admin->get_cart_items();
             </tr>
             <?php 
             $stt = 1;
-            while ($item = $cart_items->fetch_assoc()): 
+            foreach ($cart_items as $item): 
                 // Chuyển đổi giá thành số thực
                 $product_price = floatval($item['product_price']);
                 $product_quanlity = intval($item['product_quanlity']);
@@ -59,14 +69,17 @@ $cart_items = $admin->get_cart_items();
                 <td><?php echo number_format($sum_price, 0, ',', '.'); ?> đ</td>
                 <td><a href="cart.php?action=delete&product_id=<?php echo intval($item['product_id']); ?>">Xóa</a></td>
             </tr>
-            <?php endwhile; ?>
+            <?php endforeach; ?>
         </table>
         <hr>
         <form action="payment.php" method="post">
             <!-- Thêm một trường ẩn để truyền thông tin giỏ hàng -->
-            <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($user_id); ?>">
+            <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($_SESSION['user_id']); ?>">
             <button class="cart_right_payment" type="submit">Thanh Toán</button>
         </form>
+        <?php else: ?>
+        <p>Giỏ hàng của bạn đang trống.</p>
+        <?php endif; ?>
 
     </div>
 </section>

@@ -36,10 +36,10 @@ if($get_cartegory){
             <div  class="admin_right_addCartegory">
                 <h2>Thêm Loại Sản Phẩm</h2>
                 <form action="" method="POST">
-                    <input name="cartegory_name" type="text" placeholder="Thêm Loại Sản Phẩm" value="<?php echo $result['product_name']?>">
+                    <input name="cartegory_name" type="text" placeholder="Thêm Loại Sản Phẩm" value="<?php echo $result['cartegory_name']?>">
                     <button type="submit">Sửa</button>
                 </form>
-            </div>>
+            </div>
             <hr>
 </section>
     <section class="icons-conta"></section>

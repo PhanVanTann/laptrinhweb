@@ -1,9 +1,13 @@
 <?php include "../includes/header.php";
 include "../class/profileclass.php";
 
+if (!isset($_SESSION['user_id'])) {
+    header("Location:login.php");
+    exit();
+}
 ?>
 <?php 
-session_start();
+
 // Giả sử bạn đã lưu thông tin người dùng trong phiên
 // Lấy role của người dùng từ phiên hoặc từ cơ sở dữ liệu
 $userRole = $_SESSION['roles'] ?? 0; // Mặc định là 0 nếu không có giá trị

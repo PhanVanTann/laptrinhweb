@@ -236,7 +236,7 @@ class admin {
     }
 
     public function get_cart_items() {
-        $query = "SELECT * FROM tbl_cart"; // Câu lệnh SQL để lấy tất cả sản phẩm trong giỏ hàng
+        $query = "SELECT * FROM tbl_cart";
         return $this->db->select($query);
     }
 
@@ -244,9 +244,7 @@ class admin {
         $query = "SELECT * FROM tbl_cart WHERE user_id = ?";
         return $this->db->select($query, [$user_id], "i");
     }
-    
-    
-
+   
     public function delete_from_cart($product_id) {
         $query = "DELETE FROM tbl_cart WHERE product_id = ?";
         $params = [$product_id];
@@ -254,19 +252,21 @@ class admin {
         $this->db->delete($query, $params, $types);
     }
     
-    public function insert_cart_item($product_id, $product_img, $product_name, $product_price, $product_quanlity) {
+    public function insert_cart_item($user_id, $product_id, $product_img, $product_name, $product_price, $product_quanlity) {
         $sum_price = $product_price * $product_quanlity;
     
         $query = "INSERT INTO tbl_cart (
+            user_id,
             product_id,
             product_img,
             product_name,
             product_price,
             product_quanlity,
             sum_price
-        ) VALUES (?, ?, ?, ?, ?, ?)";
+        ) VALUES (?, ?, ?, ?, ?, ?, ?)";
     
         $params = [
+            $user_id,
             $product_id,
             $product_img,
             $product_name,
@@ -274,17 +274,14 @@ class admin {
             $product_quanlity,
             $sum_price
         ];
-        $types = "issssi";
+        $types = "iisssii";
     
         $this->db->insert($query, $params, $types);
     }
-    
-    
-
 
     public function show_profileincart($user_id) {
         $query = "SELECT fullname, phone, deliveryaddress FROM tbl_register WHERE user_id = ?";
-        $result = $this->db->select($query, [$user_id], "i"); // i: integer (ID người dùng là số nguyên)
+        $result = $this->db->select($query, [$user_id], "i");
 
         if ($result->num_rows > 0) {
             return $result->fetch_assoc();
@@ -294,9 +291,9 @@ class admin {
     }
 
     public function show_cartinpayment($cart_id) {
-        $query = "SELECT product_name, quantity, price FROM tbl_cart WHERE cart_id = ?";
-        $result = $this->db->select($query, [$cart_id], "i"); 
-    
+        $query = "SELECT product_name, product_quanlity, product_price FROM tbl_cart WHERE cart_id = ?";
+        $result = $this->db->select($query, [$cart_id], "i");
+
         if ($result->num_rows > 0) {
             return $result->fetch_all(MYSQLI_ASSOC);
         } else {
@@ -304,7 +301,32 @@ class admin {
         }
     }
     
+    public function save_cart($user_id) {
+        // Xóa các sản phẩm hiện tại của người dùng trong giỏ hàng trước khi lưu trữ
+        $query = "DELETE FROM tbl_cart WHERE user_id = ?";
+        $this->db->delete($query, [$user_id], "i");
     
+        // Lấy tất cả các sản phẩm trong giỏ hàng hiện tại từ session hoặc từ giỏ hàng tạm thời
+        $cart_items = $_SESSION['cart'] ?? []; // Giả sử giỏ hàng được lưu trong session
+    
+        // Lưu các sản phẩm vào cơ sở dữ liệu
+        foreach ($cart_items as $item) {
+            $query = "INSERT INTO tbl_cart (user_id, product_id, product_img, product_name, product_price, product_quanlity, sum_price) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $params = [
+                $user_id,
+                $item['product_id'],
+                $item['product_img'],
+                $item['product_name'],
+                $item['product_price'],
+                $item['product_quanlity'],
+                $item['sum_price']
+            ];
+            $types = "iisssii";
+            $this->db->insert($query, $params, $types);
+        }
+    }
+    
+      
     
 }
 ?>

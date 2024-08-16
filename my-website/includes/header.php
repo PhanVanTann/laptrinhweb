@@ -44,8 +44,8 @@ $isUser = $userRole == 0;
         
 
         <div class="icons login">
-            <a href="../pages/login.php" id="login">Login</a>
-            <a href="#" id="logout" style="display: none;">Logout</a>
+            <a href="../pages/login.php" id="login">Đăng Nhập</a>
+            <a href="../class/logout.php" id="logout" style="display: none;">Đăng Xuất</a>
         </div>
     </header>
 
