@@ -12,6 +12,9 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['produc
     header('Location: cart.php');
     exit();
 }
+
+
+$cart_id = $_SESSION['cart_id'] ?? '';
 ?>
 
 <section class="icons-conta"> </section>
@@ -59,7 +62,11 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['produc
             <?php endwhile; ?>
         </table>
         <hr>
-        <button class="cart_right_payment">Thanh Toán</button>
+        <form action="payment.php" method="get">
+    
+            <button class="cart_right_payment" type="submit">Thanh Toán</button>
+        </form>
+
     </div>
 </section>
 <section class="icons-conta"> </section>

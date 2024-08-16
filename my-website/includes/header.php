@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../assets/css/profile.css">  
     <link rel="stylesheet" href="../assets/css/cart.css">
     <link rel="stylesheet" href="../assets/css/admin.css">
-
+    <link rel="stylesheet" href="../assets/css/payment.css">
     
     <script src="../assets/js/home.js"></script> 
     <script src="../assets/js/admin.js"></script>

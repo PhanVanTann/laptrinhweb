@@ -247,11 +247,9 @@ class admin {
         $this->db->delete($query, $params, $types);
     }
     
-    public function insert_cart($product_id, $product_img, $product_name, $product_price, $product_quanlity) {
-        // Tính toán tổng giá tiền
+    public function insert_cart_item($product_id, $product_img, $product_name, $product_price, $product_quanlity) {
         $sum_price = $product_price * $product_quanlity;
     
-        // Câu lệnh SQL để thêm sản phẩm vào giỏ hàng
         $query = "INSERT INTO tbl_cart (
             product_id,
             product_img,
@@ -260,8 +258,7 @@ class admin {
             product_quanlity,
             sum_price
         ) VALUES (?, ?, ?, ?, ?, ?)";
-        
-        // Các tham số và loại dữ liệu
+    
         $params = [
             $product_id,
             $product_img,
@@ -270,9 +267,8 @@ class admin {
             $product_quanlity,
             $sum_price
         ];
-        $types = "issssi"; // i: integer, s: string, s: string, s: string, i: integer, i: integer
-        
-        // Thực hiện câu lệnh insert
+        $types = "issssi";
+    
         $this->db->insert($query, $params, $types);
     }
     
