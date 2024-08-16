@@ -1,6 +1,6 @@
 <?php include "../includes/header.php";
 include "../class/profileclass.php";
-include "../class/auth.php";
+
 ?>
 <?php 
 session_start();

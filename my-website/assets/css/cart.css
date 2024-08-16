@@ -24,13 +24,14 @@
 .cart_right{
     flex:3;
     font-size: 15px;
+    
 }
 .cart_right h2{
     text-align: center;
     margin: 30px;
 }
 
-.cart_right input[type="number"] {
+.cart_right input {
     width: 60px;
     padding: 5px;
     font-size: 14px;
@@ -65,4 +66,17 @@ input[type="number"]:hover {
 }
 .cart_right table td{
     padding: 20px;
+}
+.cart_right_payment{
+    cursor: pointer;
+    border:2px solid #b22222;
+    background:none;
+    margin-top: 40px;
+    padding: 10px;
+    margin-right: 40px;
+   float: inline-end;
+    
+}
+.cart_right_payment:hover{
+    background-color: #902121;
 }

@@ -18,19 +18,15 @@ class Login {
             $storedPassword = $row['passwords'];
             $userRole = $row['roles'];
             $userId = $row['user_id'];
-            $fullname = $row['fullname'];
+            
 
             // So sánh mật khẩu đã nhập với mật khẩu lưu trữ
             if ($passwords === $storedPassword) {
                 session_start();
                 $_SESSION['roles'] = $userRole;
                 $_SESSION['user_id'] = $userId;
-                $token = bin2hex(random_bytes(16));
-                $updateQuery = "UPDATE tbl_register SET token = ? WHERE user_id = ?";
-                $this->db->update($updateQuery, [$token, $userId], "si");
-                // Đặt cookie tồn tại trong 30 ngày
                 
-                setcookie('token', $token, time() + (86400 * 30), "/");
+                
 
                 echo 'success'; // Đăng nhập thành công
             } else {

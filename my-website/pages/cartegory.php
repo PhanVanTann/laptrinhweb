@@ -6,11 +6,14 @@ include "../class/adminclass.php";
 
 
 
-$product = new admin;
-$show_product = $product->getFilteredProducts(
-    isset($_GET['category_id']) ? intval($_GET['category_id']) : null,
-    isset($_GET['trademark']) ? $_GET['trademark'] : null
-);
+$cartegory_id = isset($_GET['category_id']) ? intval($_GET['category_id']) : null;
+$trademark = isset($_GET['trademark']) ? $_GET['trademark'] : null;
+$sort = isset($_GET['sort']) ? $_GET['sort'] : null;
+$price_min = isset($_GET['price_min']) ? floatval($_GET['price_min']) : null;
+$price_max = isset($_GET['price_max']) ? floatval($_GET['price_max']) : null;
+
+$product = new admin();
+$show_product = $product->getFilteredProducts($cartegory_id, $trademark, $sort, $price_min, $price_max);
 
 
 $trademark = new admin;
@@ -67,21 +70,20 @@ $show_cartegory = $cartegory->show_cartegory();
             <div class="cartegory_left_price">
                 <h2>Giá</h2>
                 <form action="">
-                    <input type="number" placeholder="Từ">
+                    <input type="number" name="price_min" placeholder="Từ" value="<?php echo isset($_GET['price_min']) ? intval($_GET['price_min']) : ''; ?>">
                     <span>-</span>
-                    <input type="number" placeholder="Đến">
-                    <button >Áp Dụng</button>
+                    <input type="number" name="price_max" placeholder="Đến" value="<?php echo isset($_GET['price_max']) ? intval($_GET['price_max']) : ''; ?>">
+                    <button type="submit">Áp Dụng</button>
                 </form>
             </div>
         </div>
 
         <div class="cartegory_right">
             <section class="cartegory_right_top">
-                <nav>
-                    <a href="#">giá Thấp</a>
-                    <a href="#">giá Cao</a>
-                    
-                </nav>
+            <nav>
+                <a href="?sort=price_asc<?php echo isset($_GET['category_id']) ? '&category_id=' . intval($_GET['category_id']) : ''; ?><?php echo isset($_GET['trademark']) ? '&trademark=' . urlencode($_GET['trademark']) : ''; ?>">Giá Thấp</a>
+                <a href="?sort=price_desc<?php echo isset($_GET['category_id']) ? '&category_id=' . intval($_GET['category_id']) : ''; ?><?php echo isset($_GET['trademark']) ? '&trademark=' . urlencode($_GET['trademark']) : ''; ?>">Giá Cao</a>
+            </nav>
             </section>
             <hr>
             <div class="cartegory_right_center">

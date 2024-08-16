@@ -2,9 +2,11 @@
 
 <?php include "../includes/header.php";
  include "../class/adminclass.php";
- include "../class/auth.php";
+
 ?>
+
 <?php 
+
 
 $userRole = $_SESSION['roles'] ?? 0;
 $isUser = $userRole == 0;
@@ -17,6 +19,24 @@ $show_productid = $product->show_productid($product_id);
 if($show_productid){
     $result = $show_productid->fetch_assoc();
     
+}
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Lấy dữ liệu từ form
+    $product_id = intval($_POST['product_id']);
+    $product_img = $_POST['product_img'];
+    $product_name = $_POST['product_name'];
+    $product_price = $_POST['product_price'];
+    $product_quanlity = intval($_POST['product_quanlity']);
+
+    // Tạo đối tượng admin và gọi phương thức insert_cart
+    $admin = new admin();
+    $admin->insert_cart($product_id, $product_img, $product_name, $product_price, $product_quanlity);
+
+    // Chuyển hướng đến trang giỏ hàng
+    header('Location: cart.php');
+    exit();
 }
 ?>
     <section class="icons-conta"> </section>
@@ -42,12 +62,6 @@ if($show_productid){
             </div>
             <div class="product_decs_right_price"><?php echo number_format($result['product_price'],0,',','.' );?> đ</div>
             
-            <div class="product_decs_right_quantity">
-                <label for="">Số Lượng:</label>
-                <button id="decrease-btn" class="quantity-btn">-</button>
-                <input type="text" id="quantity-input" value="1" readonly />
-                <button id="increase-btn" class="quantity-btn">+</button>
-            </div>
 
             <div class="product_decs_right_decs">
                 <h3>Chi tiết sản phẩm</h3>
@@ -55,15 +69,25 @@ if($show_productid){
                         
             </div>
             <?php if ($isUser): ?>
-            <div class="product_decs_right_buy">
-                <button>Thêm vào giỏ hàng</button>
-                <button>Mua ngay NowFree 2H</button>
-            </div>
-           
+                <div class="product_decs_right_buy">
+                    <form id="addToCartForm" action="product.php" method="POST">
+                        <input type="hidden" name="product_id" value="<?php echo $result['product_id']; ?>">
+                        <input type="hidden" name="product_img" value="<?php echo $result['product_img']; ?>">
+                        <input type="hidden" name="product_name" value="<?php echo $result['product_name']; ?>">
+                        <input type="hidden" name="product_price" value="<?php echo $result['product_price']; ?>">
+                        <div class="quanlity">
+                            <label for="">Số Lượng:</label>
+                            <input class="product_decs_right_quantity" type="number" name="product_quanlity" id="quantity-input" value="1" min="1">
+                        </div>
+                        <button type="submit">Thêm vào giỏ hàng</button>
+                        <button>Mua ngay NowFree 2H</button>
+                    </form>
+                </div>
             <?php endif; ?>
+
             <hr>
         </div>
-        <script src="../assets/js/product.js"></script>
+      
 
     </section>
    

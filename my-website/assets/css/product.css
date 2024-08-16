@@ -77,18 +77,15 @@
     justify-content: center;
 }
 
-#quantity-input {
-    width: 40px;
-    height: 30px;
-    text-align: center;
-    border: 1px solid #ccc;
-    font-size: 18px;
-    margin: 0 10px;
-}
 
+.product_decs_right_buy div{
+    display: flex;
+    align-items: center;
+}
 .product_decs_right_buy button {
     padding: 10px 20px;
     margin-right: 10px;
+    margin-top: 20px;
     background-color: #FF5722;
     color: #fff;
     border: none;
@@ -102,4 +99,4 @@
     font-size: 15px;
     line-height: 1.8;
 }
-    
+   

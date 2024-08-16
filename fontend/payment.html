@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán</title>
+    <link rel="stylesheet" href="payment.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Thông Tin Thanh Toán</h2>
+        <form action="process_payment.php" method="post">
+            <div class="form-group">
+                <label for="name">Họ và Tên:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Số Điện Thoại:</label>
+                <input type="text" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Địa Chỉ:</label>
+                <textarea id="address" name="address" rows="4" required></textarea>
+            </div>
+
+            <h3>Thông Tin Đơn Hàng</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tên Sản Phẩm</th>
+                        <th>Số Lượng</th>
+                        <th>Giá Tiền</th>
+                        <th>Thành Tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dữ liệu sản phẩm sẽ được lặp qua ở đây -->
+                    <tr>
+                        <td>Sản phẩm A</td>
+                        <td>2</td>
+                        <td>100.000 đ</td>
+                        <td>200.000 đ</td>
+                    </tr>
+                    <tr>
+                        <td>Sản phẩm B</td>
+                        <td>1</td>
+                        <td>150.000 đ</td>
+                        <td>150.000 đ</td>
+                    </tr>
+                    <!-- Dòng tổng tiền -->
+                    <tr>
+                        <td colspan="3"><strong>Tổng Tiền</strong></td>
+                        <td><strong>350.000 đ</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="form-group">
+                <label for="payment_method">Phương Thức Thanh Toán:</label>
+                <select id="payment_method" name="payment_method" required>
+                    <option value="cod">Thanh Toán Khi Nhận Hàng</option>
+                    <option value="bank_transfer">Chuyển Khoản Ngân Hàng</option>
+                    <option value="paypal">Thanh Toán Qua PayPal</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn">Xác Nhận Đơn Hàng</button>
+        </form>
+    </div>
+</body>
+</html>

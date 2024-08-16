@@ -174,40 +174,106 @@ class admin {
     }
 
 
-    public function getFilteredProducts($cartegory_id = null, $trademark = null) {
+    public function getFilteredProducts($cartegory_id = null, $trademark = null, $sort = null, $price_min = null, $price_max = null) {
         $query = "SELECT * FROM tbl_product WHERE 1=1"; // '1=1' để dễ dàng thêm điều kiện
-    
+        
         if ($cartegory_id) {
             $query .= " AND cartegory_id = ?";
         }
-    
+        
         if ($trademark) {
             $query .= " AND product_trademark = ?";
         }
-    
-        $query .= " ORDER BY product_id DESC"; // Sắp xếp kết quả để dễ đọc hơn
-    
+        
+        if ($price_min !== null) {
+            $query .= " AND product_price >= ?";
+        }
+        
+        if ($price_max !== null) {
+            $query .= " AND product_price <= ?";
+        }
+        
+        // Thêm điều kiện sắp xếp dựa trên tham số $sort
+        if ($sort === 'price_asc') {
+            $query .= " ORDER BY product_price ASC";
+        } elseif ($sort === 'price_desc') {
+            $query .= " ORDER BY product_price DESC";
+        } else {
+            $query .= " ORDER BY product_id DESC"; // Sắp xếp mặc định
+        }
+        
         $params = [];
         $types = "";
-    
+        
         if ($cartegory_id) {
             $params[] = $cartegory_id;
             $types .= "i";
         }
-    
+        
         if ($trademark) {
             $params[] = $trademark;
             $types .= "s";
         }
-    
+        
+        if ($price_min !== null) {
+            $params[] = $price_min;
+            $types .= "d";
+        }
+        
+        if ($price_max !== null) {
+            $params[] = $price_max;
+            $types .= "d";
+        }
+        
         $result = $this->db->select($query, $params, $types);
-    
+        
         // Kiểm tra lỗi truy vấn
         if ($result === false) {
             die("Query failed.");
         }
-    
+        
         return $result;
+    }
+
+    public function get_cart_items() {
+        $query = "SELECT * FROM tbl_cart"; // Câu lệnh SQL để lấy tất cả sản phẩm trong giỏ hàng
+        return $this->db->select($query);
+    }
+
+    public function delete_from_cart($product_id) {
+        $query = "DELETE FROM tbl_cart WHERE product_id = ?";
+        $params = [$product_id];
+        $types = "i";
+        $this->db->delete($query, $params, $types);
+    }
+    
+    public function insert_cart($product_id, $product_img, $product_name, $product_price, $product_quanlity) {
+        // Tính toán tổng giá tiền
+        $sum_price = $product_price * $product_quanlity;
+    
+        // Câu lệnh SQL để thêm sản phẩm vào giỏ hàng
+        $query = "INSERT INTO tbl_cart (
+            product_id,
+            product_img,
+            product_name,
+            product_price,
+            product_quanlity,
+            sum_price
+        ) VALUES (?, ?, ?, ?, ?, ?)";
+        
+        // Các tham số và loại dữ liệu
+        $params = [
+            $product_id,
+            $product_img,
+            $product_name,
+            $product_price,
+            $product_quanlity,
+            $sum_price
+        ];
+        $types = "issssi"; // i: integer, s: string, s: string, s: string, i: integer, i: integer
+        
+        // Thực hiện câu lệnh insert
+        $this->db->insert($query, $params, $types);
     }
     
     
