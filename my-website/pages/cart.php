@@ -1,16 +1,17 @@
-<?php include "../includes/header.php";
+<?php
+include "../includes/header.php";
 include "../class/adminclass.php";
 
 // Tạo đối tượng admin
 $admin = new admin();
 $cart_items = $admin->get_cart_items(); // Gọi phương thức để lấy sản phẩm từ giỏ hàng
+
 if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['product_id'])) {
     $product_id = intval($_GET['product_id']);
     $admin->delete_from_cart($product_id);
     header('Location: cart.php');
     exit();
 }
-
 ?>
 
 <section class="icons-conta"> </section>
@@ -27,7 +28,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['produc
     </div>
     <div class="cart_right">
         <hr>
-    
         <h2>Giỏ Hàng Của Bạn</h2>
         <table>
             <tr>
@@ -41,30 +41,26 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['produc
             </tr>
             <?php 
             $stt = 1;
-            while ($item = $cart_items->fetch_assoc()): ?>
+            while ($item = $cart_items->fetch_assoc()): 
+                // Chuyển đổi giá thành số thực
+                $product_price = floatval($item['product_price']);
+                $product_quanlity = intval($item['product_quanlity']);
+                $sum_price = $product_price * $product_quanlity;
+            ?>
             <tr>
                 <td><?php echo $stt++; ?></td>
-                <td><img src="../uploads/uploads_product/<?php echo $item['product_img']; ?>" alt="Product Image" width="50"></td>
-                <td><?php echo $item['product_name']; ?></td>
-                <td><?php echo number_format($item['product_price'], 0, ',', '.'); ?> đ</td>
-                <td><?php echo $item['product_quanlity']; ?></td>
-                <td><?php echo number_format($item['product_price'] * $item['product_quanlity'], 0, ',', '.'); ?> đ</td>
-                <td><a href="cart.php?action=delete&product_id=<?php echo $item['product_id']; ?>">Xóa</a></td>
+                <td><img src="../uploads/uploads_product/<?php echo htmlspecialchars($item['product_img']); ?>" alt="Product Image" width="50"></td>
+                <td><?php echo htmlspecialchars($item['product_name']); ?></td>
+                <td><?php echo number_format($product_price, 0, ',', '.'); ?> đ</td>
+                <td><?php echo $product_quanlity; ?></td>
+                <td><?php echo number_format($sum_price, 0, ',', '.'); ?> đ</td>
+                <td><a href="cart.php?action=delete&product_id=<?php echo intval($item['product_id']); ?>">Xóa</a></td>
             </tr>
             <?php endwhile; ?>
-
         </table>
         <hr>
-            <button class="cart_right_payment">Thanh Toán</button>
-      
-        
-        
-
-        
-        
+        <button class="cart_right_payment">Thanh Toán</button>
     </div>
-    
 </section>
-
 <section class="icons-conta"> </section>
 <?php include "../includes/footer.php"; ?>
