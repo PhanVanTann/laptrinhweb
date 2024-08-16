@@ -45,6 +45,7 @@
 
 .cartegory_left li {
     padding: 5px;
+    display: flex;
     
 }
 

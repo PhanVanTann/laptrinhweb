@@ -1,77 +1,79 @@
+    .payment-container {
+        width: 80%;
+        max-width: 900px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        font-size: 15px;
+        line-height: 1.8;
+    }
 
-.container_payment {
-    width: 80%;
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    font-size: 15px;
-    line-height: 1.8;
+    h2, h3 {
+        margin-top: 0;
+    }
+
+    .payment-form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"]
+     {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    .payment-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        
+    }
+
+     .payment-table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+      
+        
+        
+    }
+
+    .payment-table th {
+        background-color: #f4f4f4;
+    }
+
+.payment-table .td1{
+    width: 400px;
 }
 
-h2, h3 {
-    margin-top: 0;
-}
 
-.form-group {
-    margin-bottom: 15px;
-}
+   
 
-label {
-    display: block;
-    margin-bottom: 5px;
-}
+    .payment-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+    }
 
-input[type="text"],
-textarea
-{
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-textarea {
-    resize: vertical;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-table, th, td {
-    border: 1px solid #ddd;
-}
-
-th, td {
-    padding: 10px;
-    text-align: left;
-}
-
-th {
-    background-color: #f4f4f4;
-}
-
-tfoot td {
-    text-align: right;
-}
-
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-}
-
-.btn:hover {
-    background-color: #0056b3;
-}
+    .payment-btn:hover {
+        background-color: #0056b3;
+    }
+    

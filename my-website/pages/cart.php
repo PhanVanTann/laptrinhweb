@@ -3,18 +3,18 @@ include "../includes/header.php";
 include "../class/adminclass.php";
 
 // Tạo đối tượng admin
-$admin = new admin();
-$cart_items = $admin->get_cart_items(); // Gọi phương thức để lấy sản phẩm từ giỏ hàng
 
+$admin = new admin();
 if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['product_id'])) {
     $product_id = intval($_GET['product_id']);
     $admin->delete_from_cart($product_id);
     header('Location: cart.php');
     exit();
 }
+$cart_items = $admin->get_cart_items();
 
 
-$cart_id = $_SESSION['cart_id'] ?? '';
+
 ?>
 
 <section class="icons-conta"> </section>
@@ -62,8 +62,9 @@ $cart_id = $_SESSION['cart_id'] ?? '';
             <?php endwhile; ?>
         </table>
         <hr>
-        <form action="payment.php" method="get">
-    
+        <form action="payment.php" method="post">
+            <!-- Thêm một trường ẩn để truyền thông tin giỏ hàng -->
+            <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($user_id); ?>">
             <button class="cart_right_payment" type="submit">Thanh Toán</button>
         </form>
 

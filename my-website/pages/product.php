@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Tạo đối tượng admin và gọi phương thức insert_cart
     $admin = new admin();
-    $admin->insert_cart($product_id, $product_img, $product_name, $product_price, $product_quanlity);
+    $admin->insert_cart_item($product_id, $product_img, $product_name, $product_price, $product_quanlity);
 
     // Chuyển hướng đến trang giỏ hàng
     header('Location: cart.php');

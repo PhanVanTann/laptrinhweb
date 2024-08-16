@@ -95,6 +95,9 @@ class Database {
     public function getInsertId() {
         return $this->connection->insert_id;
     }
+
+   
+    
 }
 
 

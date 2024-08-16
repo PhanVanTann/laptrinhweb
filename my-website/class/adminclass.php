@@ -240,6 +240,13 @@ class admin {
         return $this->db->select($query);
     }
 
+    public function get_cart_items_by_user_id($user_id) {
+        $query = "SELECT * FROM tbl_cart WHERE user_id = ?";
+        return $this->db->select($query, [$user_id], "i");
+    }
+    
+    
+
     public function delete_from_cart($product_id) {
         $query = "DELETE FROM tbl_cart WHERE product_id = ?";
         $params = [$product_id];
@@ -285,6 +292,18 @@ class admin {
             return null;
         }
     }
+
+    public function show_cartinpayment($cart_id) {
+        $query = "SELECT product_name, quantity, price FROM tbl_cart WHERE cart_id = ?";
+        $result = $this->db->select($query, [$cart_id], "i"); 
+    
+        if ($result->num_rows > 0) {
+            return $result->fetch_all(MYSQLI_ASSOC);
+        } else {
+            return [];
+        }
+    }
+    
     
     
 }
