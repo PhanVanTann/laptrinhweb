@@ -273,6 +273,18 @@ class admin {
     }
     
     
+
+
+    public function show_profileincart($user_id) {
+        $query = "SELECT fullname, phone, deliveryaddress FROM tbl_register WHERE user_id = ?";
+        $result = $this->db->select($query, [$user_id], "i"); // i: integer (ID người dùng là số nguyên)
+
+        if ($result->num_rows > 0) {
+            return $result->fetch_assoc();
+        } else {
+            return null;
+        }
+    }
     
     
 }

@@ -25,7 +25,7 @@ class Login {
                 session_start();
                 $_SESSION['roles'] = $userRole;
                 $_SESSION['user_id'] = $userId;
-                
+                $_SESSION['fullname'] = $row['fullname']; 
                 
 
                 echo 'success'; // Đăng nhập thành công

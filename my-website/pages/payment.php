@@ -2,24 +2,29 @@
 include "../includes/header.php";
 include "../class/adminclass.php";?>
 <section class="icons-conta"> </section>
+<?php 
 
+$user_id = $_SESSION['user_id'];
+$admin = new admin(); // Thay đổi tên lớp nếu cần
+$user_info = $admin->show_profileincart($user_id);
+?>
 
 <div class="container_payment">
         <h2>Thông Tin Thanh Toán</h2>
         <form action="process_payment.php" method="post">
             <div class="form-group">
                 <label for="name">Họ và Tên:</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($user_info['fullname']); ?>" required>
             </div>
 
             <div class="form-group">
                 <label for="phone">Số Điện Thoại:</label>
-                <input type="text" id="phone" name="phone" required>
+                <input type="text" id="phone" name="phone" value="<?php echo htmlspecialchars($user_info['phone']); ?>" required>
             </div>
 
             <div class="form-group">
                 <label for="address">Địa Chỉ:</label>
-                <input type="text" id="address" name="address" rows="4" required></input>
+                <input type="text" id="address" name="address" value="<?php echo htmlspecialchars($user_info['deliveryaddress']); ?>" rows="4" required>
             </div>
 
             <h3>Thông Tin Đơn Hàng</h3>
