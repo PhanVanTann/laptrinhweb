@@ -8,6 +8,13 @@ class admin {
         $this->db = new Database();
     }
 
+    public function get_user_profile($user_id) {
+        $query = "SELECT fullname FROM tbl_register WHERE user_id = ?";
+        $params = [$user_id];
+        $types = "i"; // i cho số nguyên (integer)
+        $result = $this->db->select($query, $params, $types);
+        return $result;
+    }
     public function insert_cartegory($cartegory_name){
         $query = "INSERT INTO tbl_cartegory (cartegory_name) VALUES (?)";
         $params = [$cartegory_name];

@@ -1,5 +1,5 @@
 <?php 
-include "../class/adminclass.php";
+include "../class/adminclass.php"; 
 
 $product = new admin;
 if(!isset($_GET['product_id']) ||$_GET['product_id']==NULL){

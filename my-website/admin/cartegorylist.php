@@ -1,7 +1,7 @@
 
 <?php include "../includes/header.php";
 include "slider.php";
-include "../class/adminclass.php";
+
 ?>
 <?php
 $cartegory = new admin;

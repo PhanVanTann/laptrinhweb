@@ -1,10 +1,27 @@
 <section class="icons-conta"> </section>
 <section class="admin">
-    
+    <?php 
+        include "../class/adminclass.php"; 
+        if (!isset($_SESSION['user_id'])) {
+            header("Location:login.php");
+            exit();
+        }
+        
+        // Tạo đối tượng admin
+        $admin = new admin();
+        $user_id = $_SESSION['user_id'];
+        $profile = $admin->get_user_profile($user_id);
+        
+        // Lấy thông tin người dùng
+        $result = null;
+        if ($profile && $profile->num_rows > 0) {
+            $result = $profile->fetch_assoc();
+        }
+    ?>
     <div class="admin_left">
         <div class="admin_left_img">
         <img src="../assets/img/avatar.png">
-            <h3>Phan Van Tan</h3>
+            <h3><?php echo $result['fullname'] ?></h3>
         </div>
         <hr>
         <div class="admin_left_manageadmin">            
