@@ -1,5 +1,6 @@
 <?php include "../includes/header.php";
 include "../class/profileclass.php";
+include "../class/auth.php";
 ?>
 <?php 
 session_start();
@@ -83,4 +84,5 @@ if($show_profile){
     <script src="../assets/js/profile.js"></script> 
 </section>
     <section class="icons-conta"></section>
-    <?php include "../includes/footer.php" ?>
+    <?php include "../includes/footer.php";
+    echo "Xin chào, " . $_SESSION['fullname']; ?>

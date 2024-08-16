@@ -2,6 +2,7 @@
 
 <?php include "../includes/header.php";
  include "../class/adminclass.php";
+ include "../class/auth.php";
 ?>
 <?php 
 
