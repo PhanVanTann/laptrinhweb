@@ -3,7 +3,7 @@ include "slider.php";
 
 ?>
 <div class="admin_right">
-<div class="order-details-container">
+    <div class="order-details-container">
         <h2>Chi Tiết Đơn Hàng</h2>
 
         <!-- Trang 1: Bảng thông tin đơn hàng -->
@@ -13,7 +13,7 @@ include "slider.php";
                 <thead>
                     <tr>
                         <th>Tên Người Đặt</th>
-                        <th>ID Giỏ Hàng</th>
+                        <th>Địa Chỉ nhận Hàng</th>
                         <th>Phương Thức Thanh Toán</th>
                         <th>Thời Gian Đặt Hàng</th>
                     </tr>
@@ -77,6 +77,7 @@ include "slider.php";
             document.getElementById('product-details').classList.add('hidden');
         }
     </script>
+</div>
 
 </section>
     <section class="icons-conta"></section>

@@ -309,6 +309,67 @@ class admin {
     }
     
      
+    //oder-------------------------------------
+    public function confirm_order($cart_id, $method_payment) {
+        // Lấy thông tin giỏ hàng từ cart_id
+        $cart_items = $this->show_cartinpayment($cart_id);
+        
+        // Nếu không có sản phẩm trong giỏ hàng, thoát
+        if (empty($cart_items)) {
+            die("No items found in the cart.");
+        }
+        
+        // Lấy user_id từ bảng tbl_cart
+        $query = "SELECT user_id FROM tbl_cart WHERE cart_id = ?";
+        $result = $this->db->select($query, [$cart_id], "i");
+        
+        if ($result && $result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $user_id = $row['user_id'];
+        } else {
+            die("Cart not found.");
+        }
+        
+        // Lấy thông tin người dùng
+        $user_profile = $this->show_profileincart($user_id);
+        
+        if ($user_profile === null) {
+            die("User profile not found.");
+        }
+        
+        $user_name = $user_profile['fullname'];
+        $address = $user_profile['deliveryaddress'];
+        
+        // Thêm đơn hàng vào bảng tbl_order
+        $query = "INSERT INTO tbl_order (
+            user_id,
+            user_name,
+            address,
+            created_at,
+            method_payment
+        ) VALUES (?, ?, ?, NOW(), ?)";
+        
+        $params = [
+            $user_id,
+            $user_name,
+            $address,
+            $method_payment
+        ];
+        
+        $types = "isss";
+        $this->db->insert($query, $params, $types);
+        
+        // Lấy ID của đơn hàng vừa thêm
+        $order_id = $this->db->getInsertId();
+        
+        // Xóa các sản phẩm khỏi giỏ hàng
+        $query = "DELETE FROM tbl_cart WHERE user_id = ?";
+        $this->db->delete($query, [$user_id], "i");
+        
+        return $order_id;
+    }
+    
+    //oder-------------
     
 }
 ?>

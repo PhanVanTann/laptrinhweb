@@ -30,7 +30,7 @@ $total_price = 0;
 
 <div class="payment-container">
     <h2>Thông Tin Thanh Toán</h2>
-    <form action="process_payment.php" method="post">
+    <form action="../class/process_payment.php" method="post">
         <div class="payment-form-group">
             <label for="name">Họ và Tên:</label>
             <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($user_info['fullname']); ?>" readonly   >
@@ -91,10 +91,9 @@ $total_price = 0;
         </div>
 
         <!-- Input ẩn để gửi user_id -->
-        <form action="payment.php">    
-            <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($user_id); ?>" readonly> 
+        <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($user_id); ?>">
             <button type="submit" class="payment-btn">Xác Nhận Đơn Hàng</button>
-        </form> 
+     
     </form>
 </div>
 </section>
