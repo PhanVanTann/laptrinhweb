@@ -30,13 +30,13 @@ class PaymentProcessor {
         }
 
         $user_name = $user_profile['fullname'];
-        $address = $user_profile['deliveryaddress'];
+        $delivery_address = $user_profile['deliveryaddress'];
 
         // Thêm đơn hàng vào bảng tbl_order
         $query = "INSERT INTO tbl_order (
             user_id,
             user_name,
-            address,
+            delivery_address,
             created_at,
             method_payment
         ) VALUES (?, ?, ?, NOW(), ?)";
@@ -44,7 +44,7 @@ class PaymentProcessor {
         $params = [
             $user_id,
             $user_name,
-            $address,
+            $delivery_address,
             $payment_method
         ];
 
