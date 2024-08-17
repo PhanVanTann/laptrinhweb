@@ -36,8 +36,6 @@ include "slider.php";
                     <input name="product_trademark" required  type="text" >
                     <label>Giá Sản Phẩm<span style="color:red;">*</span></label>
                     <input name="product_price" required  type="text" >
-                    <label>Khuyến mãi<span style="color:red;">*</span></label>
-                    <input name="product_price_new" required  type="text" >
                     <label>Chi Tiết Sản Phẩm<span style="color:red;">*</span></label>
                     <textarea name="product_desc" cols="30" rows="10" ></textarea><br>
                     <label>Ảnh Sản Phẩm<span style="color:red;">*</span></label>
@@ -49,7 +47,7 @@ include "slider.php";
                     
                     <input name="product_img_mt3" required type="file">
                     
-                    <input name="product_img_mt4" required type="file">
+                  
                     <button type="submit">Thêm</button>
                 </form>
             </div>

@@ -1,4 +1,5 @@
 function changeImage(src) {
+    console.log("Changing image to:", src); // Kiểm tra xem hàm có được gọi hay không
     document.getElementById('mainImage').src = src;
 }
 
@@ -7,11 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const increaseBtn = document.getElementById('increase-btn');
     const quantityInput = document.getElementById('quantity-input');
 
-    // Kiểm tra xem phần tử có tồn tại không
-    if (!quantityInput || !decreaseBtn || !increaseBtn) {
-        console.error('Một hoặc nhiều phần tử không tồn tại.');
-        return;
-    }
+   
 
     let quantity = parseInt(quantityInput.value);
 

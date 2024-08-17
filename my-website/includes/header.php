@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../assets/css/admin.css">
     <link rel="stylesheet" href="../assets/css/payment.css">
     <link rel="stylesheet" href="../assets/css/listpayment.css">
+    <link rel="stylesheet" href="../assets/css/status.css">
     
     <script src="../assets/js/home.js"></script> 
     <script src="../assets/js/admin.js"></script>

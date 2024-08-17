@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 ?>
-
+ 
 <section class="icons-conta"></section>
 <section class="product_decs">
     <div class="product_decs_left">
@@ -46,13 +46,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <img id="mainImage" src="../uploads/uploads_product/<?php echo htmlspecialchars($result['product_img']); ?>" >
         </div>
         <div class="product_decs_left_Imgsmail">
+        
             <img src="../uploads/uploads_product/<?php echo htmlspecialchars($result['product_img_mt1']); ?>" alt="Thumbnail 1" onclick="changeImage('../uploads/uploads_product/<?php echo htmlspecialchars($result['product_img_mt1']); ?>')">
             <img src="../uploads/uploads_product/<?php echo htmlspecialchars($result['product_img_mt2']); ?>" alt="Thumbnail 2" onclick="changeImage('../uploads/uploads_product/<?php echo htmlspecialchars($result['product_img_mt2']); ?>')">
             <img src="../uploads/uploads_product/<?php echo htmlspecialchars($result['product_img_mt3']); ?>" alt="Thumbnail 3" onclick="changeImage('../uploads/uploads_product/<?php echo htmlspecialchars($result['product_img_mt3']); ?>')">
-            <img src="../uploads/uploads_product/<?php echo htmlspecialchars($result['product_img_mt4']); ?>" alt="Thumbnail 4" onclick="changeImage('../uploads/uploads_product/<?php echo htmlspecialchars($result['product_img_mt4']); ?>')">
         </div>
+       
     </div>
-
+    <script src="../assets/js/product.js"></script>
     <div class="product_decs_right">
         <hr>
         <div class="product_decs_right_name">
@@ -81,6 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <?php endif; ?>
         <hr>
     </div>
+   
 </section>
 <section class="icons-conta"></section>
 <?php include "../includes/footer.php" ?>

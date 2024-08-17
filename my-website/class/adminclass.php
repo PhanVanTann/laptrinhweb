@@ -58,14 +58,11 @@ class admin {
         $cartegory_id = $_POST['cartegory_id'];
         $product_trademark = $_POST['product_trademark'];
         $product_price = $_POST['product_price'];
-        $product_price_new = $_POST['product_price_new'];
         $product_desc = $_POST['product_desc'];
     
         $upload_dir = '../uploads/uploads_product/';
-        $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
+        $allowed_types = ['image/jpeg', 'image/png', 'image/gif','image/webp'];
         $uploaded_images = [];
-
-      
     
         // Xử lý ảnh chính
         $product_img = $_FILES['product_img'];
@@ -81,7 +78,7 @@ class admin {
         }
     
         // Xử lý các ảnh mô tả
-        for ($i = 1; $i <= 4; $i++) {
+        for ($i = 1; $i <= 3; $i++) {
             $img_key = "product_img_mt" . $i;
             if (isset($_FILES[$img_key]) && $_FILES[$img_key]['error'] == UPLOAD_ERR_OK && in_array($_FILES[$img_key]['type'], $allowed_types)) {
                 $img_path = $upload_dir . basename($_FILES[$img_key]['name']);
@@ -95,20 +92,21 @@ class admin {
             }
         }
     
+        // Chuyển đổi product_price thành số nguyên
+        $product_price = str_replace('.', '', $product_price);
+    
         // Câu lệnh SQL với placeholder
         $query = "INSERT INTO tbl_product (
             product_name,
             cartegory_id,
             product_trademark,
             product_price,
-            product_price_new,
             product_desc,
             product_img,
             product_img_mt1,
             product_img_mt2,
-            product_img_mt3,
-            product_img_mt4
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            product_img_mt3
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
         // Các tham số và loại dữ liệu
         $params = [
@@ -116,21 +114,20 @@ class admin {
             $cartegory_id, 
             $product_trademark, 
             $product_price, 
-            $product_price_new, 
             $product_desc, 
             $uploaded_images['main'] ?? '',
             $uploaded_images['product_img_mt1'] ?? '',
             $uploaded_images['product_img_mt2'] ?? '',
-            $uploaded_images['product_img_mt3'] ?? '',
-            $uploaded_images['product_img_mt4'] ?? ''
+            $uploaded_images['product_img_mt3'] ?? ''
         ];
-        $types = "sisddssssss"; // s: string, i: integer, d: double
+        $types = "sisssssss"; // s: string, i: integer
     
         $this->db->insert($query, $params, $types);
         $product_id = $this->db->getInsertId();
         $this->add_trademark($product_id, $product_trademark);
         header('Location: productlist.php');
     }
+    
     
 
     public function show_product() {
@@ -150,13 +147,38 @@ class admin {
         $this->db->delete($query, $params, $types);      
         header('location:productlist.php'); 
     }
-    public function update_product($product_name, $product_id){
-        $query = "UPDATE tbl_product SET product_name = ? WHERE product_id = ?";
-        $params = [$product_name, $product_id];
-        $types = "si"; 
+    public function update_product($product_name, $cartegory_id, $product_trademark, $product_price, $product_desc, $product_img, $product_img_mt1, $product_img_mt2, $product_img_mt3, $product_id) {
+        $query = "UPDATE tbl_product SET 
+            product_name = ?, 
+            cartegory_id = ?, 
+            product_trademark = ?, 
+            product_price = ?, 
+            product_desc = ?, 
+            product_img = ?, 
+            product_img_mt1 = ?, 
+            product_img_mt2 = ?, 
+            product_img_mt3 = ?
+        WHERE product_id = ?";
+        
+        $params = [
+            $product_name, 
+            $cartegory_id, 
+            $product_trademark, 
+            $product_price, 
+            $product_desc, 
+            $product_img, 
+            $product_img_mt1, 
+            $product_img_mt2, 
+            $product_img_mt3,
+            $product_id
+        ];
+        $types = "sisssssssi"; // s: string, i: integer, d: double
+        
         $this->db->update($query, $params, $types);
-        header('location:productlist.php');
+        header('location:productlist.php'); 
     }
+    
+    
 
     public function get_product($product_id){
         $query = "SELECT * FROM tbl_product WHERE product_id = ?";
@@ -311,7 +333,7 @@ class admin {
      
   
     public function getAllOrders() {
-        $query = "SELECT order_id, user_name, delivery_address, method_payment, created_at FROM tbl_order";
+        $query = "SELECT * FROM tbl_order";
         return $this->db->select($query);
     }
 

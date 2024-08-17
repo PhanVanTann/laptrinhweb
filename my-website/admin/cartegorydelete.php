@@ -1,5 +1,5 @@
 <?php 
-
+include "../class/adminclass.php";
 
 $cartegory = new admin;
 if(!isset($_GET['cartegory_id']) ||$_GET['cartegory_id']==NULL){

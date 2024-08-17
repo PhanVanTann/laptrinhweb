@@ -48,8 +48,10 @@ if($show_profile){
             <h2>Quản Lý Thông Tin Cá Nhân</h2>
         
                 
-                <li>Thông Tin Của Bạn</li>
-            
+                <li><a href="profile.php">Thông Tin Của Bạn</a></li>
+                <?php if ($isUser): ?>
+                <li><a href="status.php">Đơn Hàng Của Bạn</a></li>
+                <?php endif; ?>
         </div>
         <?php if ($isAdmin): ?>
         <div class="profile_left_manageadmin">

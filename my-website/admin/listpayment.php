@@ -21,10 +21,12 @@ $orders = $admin->getAllOrders();
                         <th>Phương Thức Thanh Toán</th>
                         <th>Thời Gian Đặt Hàng</th>
                         <th>Chi Tiết</th>
+                        <th>Trạng Thái</th>
+                   
                     </tr>
                 </thead>
                 <tbody>
-                    <?php while ($order = $orders->fetch_assoc()): ?>
+                <?php while ($order = $orders->fetch_assoc()): ?>
                     <tr>
                         <td><?php echo $order['order_id']; ?></td>
                         <td><?php echo htmlspecialchars($order['user_name']); ?></td>
@@ -32,10 +34,22 @@ $orders = $admin->getAllOrders();
                         <td><?php echo htmlspecialchars($order['method_payment']); ?></td>
                         <td><?php echo htmlspecialchars($order['created_at']); ?></td>
                         <td>
-                            <a href="listpayment.php?order_id=<?php echo $order['order_id']; ?>">Xem Chi Tiết</a>
+                            <?php
+                            // Kiểm tra nếu 'status' tồn tại trong mảng $order
+                            $status = isset($order['status']) ? $order['status'] : 'Chưa Giao';
+                            echo $status === 'Chưa Giao' ? 'Chưa Giao' : 'Đã Giao';
+                            ?>
+                        </td>
+                        <td>
+                            <?php if ($status === 'Chưa Giao'): ?>
+                            <a href="../class/statusclass.php?order_id=<?php echo $order['order_id']; ?>" onclick="return confirm('Bạn có chắc chắn muốn đánh dấu đơn hàng này là đã giao?');">Hoàn Thành</a>
+                            <?php else: ?>
+                            Đã Giao
+                            <?php endif; ?>
                         </td>
                     </tr>
                     <?php endwhile; ?>
+
                 </tbody>
             </table>
         </div>
@@ -89,19 +103,16 @@ $orders = $admin->getAllOrders();
     </div>
 </div>
 
-    <script>
-        function showDetails() {
-            document.getElementById('order-info').classList.add('hidden');
-            document.getElementById('product-details').classList.remove('hidden');
-        }
+<script>
+    function showDetails() {
+        document.getElementById('order-info').classList.add('hidden');
+        document.getElementById('product-details').classList.remove('hidden');
+    }
 
-        function showInfo() {
-            document.getElementById('order-info').classList.remove('hidden');
-            document.getElementById('product-details').classList.add('hidden');
-        }
-    </script>
-</div>
-
-</section>
-    <section class="icons-conta"></section>
-    <?php include "../includes/footer.php" ?>
+    function showInfo() {
+        document.getElementById('order-info').classList.remove('hidden');
+        document.getElementById('product-details').classList.add('hidden');
+    }
+</script>
+</section> 
+<?php include "../includes/footer.php" ?>

@@ -38,7 +38,18 @@ $show_cartegory = $cartegory->show_cartegory();
                         <td><?php echo $result['product_name'] ?></td>
                         <td><?php echo $result['product_id'] ?></td>
                         <td><?php echo $result['cartegory_id'] ?></td>
-                        <td><?php echo $result['product_price'] ?></td>
+                        <td>
+                            <?php
+                                // Loại bỏ dấu chấm trong giá trị để chuyển đổi thành số
+                                $product_price_numeric = str_replace('.', '', $result['product_price']);
+                                // Chuyển đổi thành kiểu số
+                                $product_price_numeric = (float) $product_price_numeric;
+                                // Định dạng lại giá trị sau khi chuyển đổi
+                                $formatted_price = number_format($product_price_numeric, 0, ',', '.');
+                                // Hiển thị giá trị đã định dạng
+                                echo $formatted_price;
+                            ?>
+                        </td>
                         <td><a href="productedit.php?product_id=<?php echo $result['product_id'] ?>">Sửa</a>|<a href="productdelete.php?product_id=<?php echo $result['product_id']; ?>">xóa</a></td>
                     </tr>
                     <?php
