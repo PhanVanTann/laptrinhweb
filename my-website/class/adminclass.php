@@ -308,32 +308,7 @@ class admin {
         }
     }
     
-    public function save_cart($user_id) {
-        // Xóa các sản phẩm hiện tại của người dùng trong giỏ hàng trước khi lưu trữ
-        $query = "DELETE FROM tbl_cart WHERE user_id = ?";
-        $this->db->delete($query, [$user_id], "i");
-    
-        // Lấy tất cả các sản phẩm trong giỏ hàng hiện tại từ session hoặc từ giỏ hàng tạm thời
-        $cart_items = $_SESSION['cart'] ?? []; // Giả sử giỏ hàng được lưu trong session
-    
-        // Lưu các sản phẩm vào cơ sở dữ liệu
-        foreach ($cart_items as $item) {
-            $query = "INSERT INTO tbl_cart (user_id, product_id, product_img, product_name, product_price, product_quanlity, sum_price) VALUES (?, ?, ?, ?, ?, ?, ?)";
-            $params = [
-                $user_id,
-                $item['product_id'],
-                $item['product_img'],
-                $item['product_name'],
-                $item['product_price'],
-                $item['product_quanlity'],
-                $item['sum_price']
-            ];
-            $types = "iisssii";
-            $this->db->insert($query, $params, $types);
-        }
-    }
-    
-      
+     
     
 }
 ?>

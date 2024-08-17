@@ -91,9 +91,10 @@ $total_price = 0;
         </div>
 
         <!-- Input ẩn để gửi user_id -->
-        <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($user_id); ?>" readonly>
-
-        <button type="submit" class="payment-btn">Xác Nhận Đơn Hàng</button>
+        <form action="payment.php">    
+            <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($user_id); ?>" readonly> 
+            <button type="submit" class="payment-btn">Xác Nhận Đơn Hàng</button>
+        </form> 
     </form>
 </div>
 </section>
