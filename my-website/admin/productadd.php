@@ -32,8 +32,21 @@ include "slider.php";
                                 }
                                 ?>
                     </select>
-                    <label>Thương Hiệu<span style="color:red;">*</span></label>
-                    <input name="product_trademark" required  type="text" >
+                    <label>Chọn Thương Hiệu <span style="color:red;">*</span></label>
+                        <select name="product_trademark">
+                            <option value="">--Chọn--</option>
+                            <?php 
+                                $show_trademark = $product->show_trademark();
+                                if ($show_trademark) {
+                                    while ($result = $show_trademark->fetch_assoc()) {
+                            ?>
+                            <option value="<?php echo $result['trademark_id']; ?>"><?php echo $result['product_trademark']; ?></option>
+                            <?php 
+                                    }
+                                }
+                            ?>
+                        </select>
+                    
                     <label>Giá Sản Phẩm<span style="color:red;">*</span></label>
                     <input name="product_price" required  type="text" >
                     <label>Chi Tiết Sản Phẩm<span style="color:red;">*</span></label>

@@ -37,7 +37,8 @@ $show_cartegory = $cartegory->show_cartegory();
                     <li>
                         <input type="checkbox" id="category_<?php echo $results['cartegory_id']; ?>"
                             <?php echo (isset($_GET['category_id']) && $_GET['category_id'] == $results['cartegory_id']) ? 'checked' : ''; ?>
-                            data-url="?category_id=<?php echo $results['cartegory_id']; ?>">
+                            data-url="?category_id=<?php echo $results['cartegory_id']; ?>"
+                            data-param="category_id">
                         <label for="category_<?php echo $results['cartegory_id']; ?>">
                             <?php echo htmlspecialchars($results['cartegory_name']); ?>
                         </label>
@@ -57,7 +58,8 @@ $show_cartegory = $cartegory->show_cartegory();
                         <li>
                             <input type="checkbox" id="trademark_<?php echo $results['product_trademark']; ?>"
                                 <?php echo (isset($_GET['trademark']) && $_GET['trademark'] == $results['product_trademark']) ? 'checked' : ''; ?>
-                                data-url="?trademark=<?php echo urlencode($results['product_trademark']); ?>">
+                                data-url="?trademark=<?php echo urlencode($results['product_trademark']); ?>"
+                                data-param="trademark">
                             <label for="trademark_<?php echo $results['product_trademark']; ?>">
                                 <?php echo htmlspecialchars($results['product_trademark']); ?>
                             </label>

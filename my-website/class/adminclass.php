@@ -7,6 +7,12 @@ class admin {
     public function __construct() {
         $this->db = new Database();
     }
+    public function show_profile($userId){
+        $query = "SELECT * FROM tbl_register WHERE user_id = ?";
+        $params = [$userId];
+        $types = "i"; // i: integer
+        return $this->db->select($query, $params, $types);
+    }
 
     public function get_user_profile($user_id) {
         $query = "SELECT fullname FROM tbl_register WHERE user_id = ?";
@@ -52,16 +58,15 @@ class admin {
         return $result;
     }
 
-
     public function insert_product() {
         $product_name = $_POST['product_name'];
         $cartegory_id = $_POST['cartegory_id'];
-        $product_trademark = $_POST['product_trademark'];
+        $trademark_id = $_POST['product_trademark'];
         $product_price = $_POST['product_price'];
         $product_desc = $_POST['product_desc'];
     
         $upload_dir = '../uploads/uploads_product/';
-        $allowed_types = ['image/jpeg', 'image/png', 'image/gif','image/webp'];
+        $allowed_types = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
         $uploaded_images = [];
     
         // Xử lý ảnh chính
@@ -77,7 +82,7 @@ class admin {
             die("Invalid main image or upload error.");
         }
     
-        // Xử lý các ảnh mô tả
+        // Xử lý ảnh mô tả
         for ($i = 1; $i <= 3; $i++) {
             $img_key = "product_img_mt" . $i;
             if (isset($_FILES[$img_key]) && $_FILES[$img_key]['error'] == UPLOAD_ERR_OK && in_array($_FILES[$img_key]['type'], $allowed_types)) {
@@ -92,10 +97,14 @@ class admin {
             }
         }
     
-        // Chuyển đổi product_price thành số nguyên
+        // Lấy tên thương hiệu từ ID
+        $query_trademark = "SELECT product_trademark FROM tbl_trademarks WHERE trademark_id = ?";
+        $params_trademark = [$trademark_id];
+        $trademark_result = $this->db->select($query_trademark, $params_trademark, "i");
+        $trademark_name = $trademark_result->fetch_assoc()['product_trademark'];
+    
         $product_price = str_replace('.', '', $product_price);
     
-        // Câu lệnh SQL với placeholder
         $query = "INSERT INTO tbl_product (
             product_name,
             cartegory_id,
@@ -108,11 +117,10 @@ class admin {
             product_img_mt3
         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
-        // Các tham số và loại dữ liệu
         $params = [
             $product_name, 
             $cartegory_id, 
-            $product_trademark, 
+            $trademark_name, // Sử dụng tên thương hiệu
             $product_price, 
             $product_desc, 
             $uploaded_images['main'] ?? '',
@@ -120,13 +128,15 @@ class admin {
             $uploaded_images['product_img_mt2'] ?? '',
             $uploaded_images['product_img_mt3'] ?? ''
         ];
-        $types = "sisssssss"; // s: string, i: integer
+        $types = "sisssssss";
     
         $this->db->insert($query, $params, $types);
-        $product_id = $this->db->getInsertId();
-        $this->add_trademark($product_id, $product_trademark);
+        
         header('Location: productlist.php');
     }
+    
+    
+    
     
     
 
@@ -187,14 +197,15 @@ class admin {
         $result = $this->db->select($query, $params, $types);
         return $result;
     }
+//////////////////
+    public function add_trademark( $product_trademark) {
+        $query = "INSERT INTO tbl_trademarks (product_trademark) VALUES (?)";
+        $params = [$product_trademark];
+        $types = "s"; 
+        $this->db->insert($query, $params, $types); 
+            header('location:trademarkslist.php');
+        }
 
-    public function add_trademark($product_id, $product_trademark) {
-        // Chèn product_trademark vào bảng tbl_trademarks
-        $query = "INSERT INTO tbl_trademarks (product_id, product_trademark) VALUES (?, ?)";
-        $params = [$product_id, $product_trademark];
-        $types = "is"; // i: integer, s: string
-        $this->db->insert($query, $params, $types);
-    }
 
     public function show_trademark(){
         $query = "SELECT * FROM tbl_trademarks ORDER BY trademark_id DESC";
@@ -202,6 +213,29 @@ class admin {
         return $result;
     }
 
+    public function delete_trademark($trademark_id){
+        $query = "DELETE FROM tbl_trademarks WHERE trademark_id = ?";
+        $params = [$trademark_id];
+        $types = "i";
+        $this->db->delete($query, $params, $types);      
+        header('location:trademarkslist.php'); 
+    }
+    public function update_trademark($product_trademark, $trademark_id){
+        $query = "UPDATE tbl_trademarks SET product_trademark = ? WHERE trademark_id = ?";
+        $params = [$product_trademark, $trademark_id];
+        $types = "si"; 
+        $this->db->update($query, $params, $types);
+        header('location:trademarkslist.php');
+    }
+
+    public function get_trademark($trademark_id){
+        $query = "SELECT * FROM tbl_trademarks WHERE trademark_id = ?";
+        $params = [$trademark_id];
+        $types = "i"; // "i" cho số nguyên (integer)
+        $result = $this->db->select($query, $params, $types);
+        return $result;
+    }
+/////////////////////////
 
     public function getFilteredProducts($cartegory_id = null, $trademark = null, $sort = null, $price_min = null, $price_max = null) {
         $query = "SELECT * FROM tbl_product WHERE 1=1"; // '1=1' để dễ dàng thêm điều kiện

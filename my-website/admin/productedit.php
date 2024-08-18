@@ -67,8 +67,19 @@ if($get_product){
                         ?>
                     </select>
 
-                    <label>Thương Hiệu<span style="color:red;">*</span></label>
-                    <input name="product_trademark" required type="text" value="<?php echo $result['product_trademark']?>">
+                    <label>Chọn Thương Hiệu <span style="color:red;">*</span></label>
+                    <select name="product_trademark">
+                        <option>--chọn--</option>
+                        <?php 
+                                    $show_trademark = $product -> show_trademark();
+                                    if($show_trademark){
+                                        while($row = $show_trademark->fetch_assoc()){
+                                            $selected = ($row['product_trademark'] == $result['product_trademark']) ? 'selected' : '';
+                                            echo "<option value='{$row['trademark_id']}' {$selected}>{$row['product_trademark']}</option>";
+                                        }
+                                }
+                                ?>
+                    </select>
                     
                     <label>Giá Sản Phẩm<span style="color:red;">*</span></label>
                     <?php

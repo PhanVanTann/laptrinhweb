@@ -20,8 +20,9 @@ $orders = $admin->getAllOrders();
                         <th>Địa Chỉ Nhận Hàng</th>
                         <th>Phương Thức Thanh Toán</th>
                         <th>Thời Gian Đặt Hàng</th>
-                        <th>Chi Tiết</th>
                         <th>Trạng Thái</th>
+                        <th>Chi Tiết</th>
+                        <th></th>
                    
                     </tr>
                 </thead>
@@ -39,6 +40,9 @@ $orders = $admin->getAllOrders();
                             $status = isset($order['status']) ? $order['status'] : 'Chưa Giao';
                             echo $status === 'Chưa Giao' ? 'Chưa Giao' : 'Đã Giao';
                             ?>
+                        </td>
+                        <td>
+                            <a href="?order_id=<?php echo $order['order_id']; ?>" onclick="return showDetails();">Xem Chi Tiết</a>
                         </td>
                         <td>
                             <?php if ($status === 'Chưa Giao'): ?>

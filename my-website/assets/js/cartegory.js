@@ -108,21 +108,25 @@ document.addEventListener('DOMContentLoaded', () => {
     renderPagination();
 });
 
-document.querySelectorAll('.cartegory_left_trademark input[type="checkbox"]').forEach(function(checkbox) {
-    checkbox.addEventListener('change', function() {
-        const url = this.getAttribute('data-url');
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('input[type="checkbox"][data-url]').forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            const url = new URL(window.location.href);
+            const param = this.getAttribute('data-param'); // Sử dụng data-param để phân biệt giữa trademark và category_id
 
-        if (this.checked) {
-            // Điều hướng đến URL có tham số trademark
-            window.location.href = url;
-        } else {
-            // Xóa tham số trademark khỏi URL
-            const urlParams = new URLSearchParams(window.location.search);
-            urlParams.delete('trademark');
-            window.location.search = urlParams.toString();
-        }
+            if (this.checked) {
+                url.searchParams.set(param, this.value);
+            } else {
+                url.searchParams.delete(param);
+            }
+
+            // Cập nhật URL mà không tải lại trang
+            window.history.pushState({}, '', url);
+        });
     });
 });
+
+
 
 document.addEventListener('DOMContentLoaded', function() {
     // Lấy tất cả các checkbox với data-url

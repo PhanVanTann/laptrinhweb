@@ -2,6 +2,7 @@
 include "../includes/header.php";
 include "../class/adminclass.php";
 
+
 // Kiểm tra xem người dùng đã đăng nhập chưa
 if (!isset($_SESSION['user_id'])) {
     header("Location:login.php");
@@ -24,6 +25,12 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['produc
 // Lấy giỏ hàng từ cơ sở dữ liệu dựa trên user_id
 $cart_items = $admin->get_cart_items_by_user_id($user_id)->fetch_all(MYSQLI_ASSOC);
 
+$profile = new admin; 
+$show_profile = $profile->show_profile($user_id);
+$result = null;
+if($show_profile){
+    $result = $show_profile->fetch_assoc();
+}
 ?>
 
 <section class="icons-conta"> </section>
@@ -31,7 +38,7 @@ $cart_items = $admin->get_cart_items_by_user_id($user_id)->fetch_all(MYSQLI_ASSO
     <div class="cart_left">
         <div class="cart_left_img">
             <img src="../assets/img/avatar.png">
-            <h3>Phan Van Tan</h3>
+            <h3><?php echo $result['fullname'] ?></h3>
         </div>
         <hr>
         <div class="cart_left_managecart">

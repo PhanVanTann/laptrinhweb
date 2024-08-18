@@ -29,6 +29,8 @@
             <ul>
                 <li><a href="cartegoryadd.php">Thêm Loại Sản Phẩm</a></li>
                 <li><a  href="cartegorylist.php">Danh Sách Loại Sản Phẩm</a></li>
+                <li><a  href="trademarksadd.php">Thêm Thương Hiệu</a></li>
+                <li><a  href="trademarkslist.php">Danh Sách Thương Hiệu</a></li>
                 <li><a  href="productadd.php">Thêm Sản Phẩm</a></li>
                 <li><a  href="productlist.php">Danh Sách Sản Phẩm</a></li>
                 <li><a  href="listpayment.php">Quản Lý thông tin Đơn Hàng</a></li>
