@@ -1,55 +1,97 @@
+/* Đặt nền gradient cho toàn bộ trang */
+/* Đặt nền cho toàn bộ trang */
 body {
-  padding-top: 4.2rem;
-  padding-bottom: 4.2rem;
-  background: rgba(0, 0, 0, 0.76);
+  background: url('./anhr/backgroundlogin.jpg') no-repeat center center fixed;
+  background-size: cover; /* Đảm bảo hình nền bao phủ toàn bộ trang */
+  font-family: 'Roboto', sans-serif;
 }
 
-h1, h2, h3 {
-  font-family: 'Kaushan Script', cursive;
+/* Các thiết lập khác của form đăng nhập */
+.container {
+  margin-top: 100px;
 }
 
+/* Định dạng form đăng nhập */
 .myform {
-  position: relative;
-  display: flex;
-  padding: 1rem;
-  flex-direction: column;
-  width: 100%;
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, .2);
-  border-radius: 1.1rem;
-  max-width: 500px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  transition: transform 0.3s ease-in-out;
 }
 
-.tx-tfm {
-  text-transform: uppercase;
+/* Hiệu ứng khi hover lên form */
+.myform:hover {
+  transform: translateY(-10px);
 }
 
+/* Các phần còn lại như trước */
+
+/* Hiệu ứng khi hover lên form */
+.myform:hover {
+  transform: translateY(-10px);
+}
+
+/* Định dạng logo */
+.logo h1 {
+  font-size: 30px;
+  color: #13238b; /* Màu nâu sẫm cho chữ logo để phù hợp với nền */
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Định dạng các trường input */
+.form-control {
+  border: 1px solid #D2B48C; /* Màu nâu nhạt phù hợp với nền */
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 10px;
+  margin-bottom: 20px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+  border-color: #8B4513; /* Màu nâu sẫm khi focus */
+  box-shadow: 0 0 8px rgba(139, 69, 19, 0.2); /* Hiệu ứng shadow nâu nhạt khi focus */
+  outline: none;
+}
+
+/* Định dạng nút đăng nhập */
 .mybtn {
-  border-radius: 50px;
+  background-color: #FFF5E1; /* Màu trắng kem */
+  color: #8B4513; /* Màu nâu sẫm */
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  transition: background-color 0.3s;
 }
 
-.login-or {
-  position: relative;
-  color: #aaa;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+.mybtn:hover {
+  background-color: #50310c; /* Màu kem đậm hơn khi hover */
 }
 
+
+/* Định dạng dòng chữ "or" */
 .span-or {
-  display: block;
-  position: absolute;
-  left: 50%;
-  top: -2px;
-  margin-left: -25px;
-  background-color: #fff;
-  width: 50px;
-  text-align: center;
+  background-color: #F6E5C5; /* Màu nền nhẹ */
+  padding: 0 10px;
+  position: relative;
+  z-index: 1;
+  color: #8B4513; /* Màu nâu sẫm cho chữ "or" */
 }
 
-.hr-or {
-  height: 1px;
-  margin-top: 0;
-  margin-bottom: 0;
+.login-or::before {
+  background-color: #D2B48C; /* Màu nâu nhạt */
+}
+
+/* Định dạng link đăng ký */
+.form-group p a {
+  color: #8B4513; /* Màu nâu sẫm đồng nhất */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.form-group p a:hover {
+  text-decoration: underline;
 }

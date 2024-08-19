@@ -1,29 +1,33 @@
 body {
     padding-top: 4.2rem;
     padding-bottom: 4.2rem;
-    background: rgba(0, 0, 0, 0.76);
+    background: url(../img/backgroundlogin.png) no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Roboto', sans-serif
   }
   
-  h1, h2, h3 {
-    font-family: 'Kaushan Script', cursive;
-  }
-  
-  .myform {
-    position: relative;
-    display: flex;
-    padding: 1rem;
-    flex-direction: column;
-    width: 100%;
-    background-color: #fff;
-    border: 1px solid rgba(0, 0, 0, .2);
-    border-radius: 1.1rem;
-    max-width: 500px;
-  }
+    .myform {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      padding: 30px;
+      transition: transform 0.3s ease-in-out;
+    }
+    .myform:hover {
+      transform: translateY(-10px);
+    }
   
   .tx-tfm {
     text-transform: uppercase;
   }
-  
+  .form-control {
+    border: 1px solid #D2B48C; /* Màu nâu nhạt phù hợp với nền */
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 10px;
+    margin-bottom: 20px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
   .mybtn {
     border-radius: 50px;
   }
