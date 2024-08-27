@@ -65,7 +65,7 @@ $total_price = 0;
                         <input type="text" name="products[<?php echo $item['product_id']; ?>][name]" value="<?php echo htmlspecialchars($item['product_name']); ?>" readonly>
                     </td>
                     <td>
-                        <input type="text" name="products[<?php echo $item['product_id']; ?>][quantity]" value="<?php echo htmlspecialchars($item['product_quanlity']); ?>" min="1" required>
+                        <input type="text" name="products[<?php echo $item['product_id']; ?>][quantity]" value="<?php echo htmlspecialchars($item['product_quanlity']); ?>" min="1" readonly>
                     </td>
                     <td>
                         <input type="text" name="products[<?php echo $item['product_id']; ?>][price]" value="<?php echo number_format($item['product_price'], 0, ',', '.'); ?> đ" readonly>

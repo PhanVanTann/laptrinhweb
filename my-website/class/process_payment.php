@@ -85,7 +85,7 @@ class PaymentProcessor {
         $this->db->delete($query, [$user_id], "i");
 
         // Chuyển hướng đến trang category
-        header("Location: ../pages/cartegory.php");
+        header("Location: ../pages/status.php");
         exit();
     }
 

@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('input[type="checkbox"][data-url]').forEach(function(checkbox) {
         checkbox.addEventListener('change', function() {
             const url = new URL(window.location.href);
-            const param = this.getAttribute('data-param'); // Sử dụng data-param để phân biệt giữa trademark và category_id
+            const param = this.getAttribute('data-param'); // Sử dụng data-param để phân biệt giữa trademark và cartegory_id
 
             if (this.checked) {
                 url.searchParams.set(param, this.value);
@@ -126,23 +126,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-
-
 document.addEventListener('DOMContentLoaded', function() {
-    // Lấy tất cả các checkbox với data-url
-    document.querySelectorAll('input[type="checkbox"][data-url]').forEach(function(checkbox) {
+    // Xử lý thay đổi trạng thái của checkbox
+    document.querySelectorAll('input[type="checkbox"][data-param]').forEach(function(checkbox) {
         checkbox.addEventListener('change', function() {
-            const url = this.getAttribute('data-url');
+            const param = this.getAttribute('data-param'); // Tham số lọc như 'category_id' hoặc 'trademark'
+            const value = this.getAttribute('data-value'); // Giá trị của tham số
+            const url = new URL(window.location.href);
 
             if (this.checked) {
-                // Nếu checkbox được chọn, điều hướng đến URL có tham số category_id
-                window.location.href = url;
+                url.searchParams.set(param, value);
             } else {
-                // Nếu checkbox bị bỏ chọn, xóa tham số category_id khỏi URL
-                const urlParams = new URLSearchParams(window.location.search);
-                urlParams.delete('category_id');
-                window.location.search = urlParams.toString();
+                url.searchParams.delete(param);
             }
+
+            // Cập nhật URL và tải lại trang
+            window.location.href = url.toString();
         });
     });
 });

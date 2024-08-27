@@ -237,66 +237,72 @@ class admin {
     }
 /////////////////////////
 
-    public function getFilteredProducts($cartegory_id = null, $trademark = null, $sort = null, $price_min = null, $price_max = null) {
-        $query = "SELECT * FROM tbl_product WHERE 1=1"; // '1=1' để dễ dàng thêm điều kiện
-        
-        if ($cartegory_id) {
-            $query .= " AND cartegory_id = ?";
-        }
-        
-        if ($trademark) {
-            $query .= " AND product_trademark = ?";
-        }
-        
-        if ($price_min !== null) {
-            $query .= " AND product_price >= ?";
-        }
-        
-        if ($price_max !== null) {
-            $query .= " AND product_price <= ?";
-        }
-        
-        // Thêm điều kiện sắp xếp dựa trên tham số $sort
-        if ($sort === 'price_asc') {
-            $query .= " ORDER BY product_price ASC";
-        } elseif ($sort === 'price_desc') {
-            $query .= " ORDER BY product_price DESC";
-        } else {
-            $query .= " ORDER BY product_id DESC"; // Sắp xếp mặc định
-        }
-        
-        $params = [];
-        $types = "";
-        
-        if ($cartegory_id) {
-            $params[] = $cartegory_id;
-            $types .= "i";
-        }
-        
-        if ($trademark) {
-            $params[] = $trademark;
-            $types .= "s";
-        }
-        
-        if ($price_min !== null) {
-            $params[] = $price_min;
-            $types .= "d";
-        }
-        
-        if ($price_max !== null) {
-            $params[] = $price_max;
-            $types .= "d";
-        }
-        
-        $result = $this->db->select($query, $params, $types);
-        
-        // Kiểm tra lỗi truy vấn
-        if ($result === false) {
-            die("Query failed.");
-        }
-        
-        return $result;
+public function getFilteredProducts($cartegory_id = null, $trademark = null, $sort = null, $price_min = null, $price_max = null) {
+    $query = "SELECT * FROM tbl_product WHERE 1=1"; // '1=1' để dễ dàng thêm điều kiện
+
+    // Thêm điều kiện cho cartegory_id nếu có
+    if ($cartegory_id !== null) {
+        $query .= " AND cartegory_id = ?";
     }
+    
+    // Thêm điều kiện cho trademark nếu có
+    if ($trademark !== null) {
+        $query .= " AND product_trademark = ?";
+    }
+    
+    // Thêm điều kiện cho giá nếu có
+    if ($price_min !== null) {
+        $query .= " AND product_price >= ?";
+    }
+    
+    if ($price_max !== null) {
+        $query .= " AND product_price <= ?";
+    }
+    
+    // Thêm điều kiện sắp xếp dựa trên tham số $sort
+    if ($sort === 'price_asc') {
+        $query .= " ORDER BY product_price ASC";
+    } elseif ($sort === 'price_desc') {
+        $query .= " ORDER BY product_price DESC";
+    } else {
+        $query .= " ORDER BY product_id DESC"; // Sắp xếp mặc định
+    }
+    
+    // Tạo mảng params và types tương ứng với các tham số lọc
+    $params = [];
+    $types = "";
+    
+    if ($cartegory_id !== null) {
+        $params[] = $cartegory_id;
+        $types .= "i"; // 'i' cho integer
+    }
+    
+    if ($trademark !== null) {
+        $params[] = $trademark;
+        $types .= "s"; // 's' cho string
+    }
+    
+    if ($price_min !== null) {
+        $params[] = $price_min;
+        $types .= "d"; // 'd' cho double
+    }
+    
+    if ($price_max !== null) {
+        $params[] = $price_max;
+        $types .= "d"; // 'd' cho double
+    }
+    
+    // Thực hiện truy vấn với các tham số và kiểu dữ liệu
+    $result = $this->db->select($query, $params, $types);
+    
+    // Kiểm tra lỗi truy vấn
+    if ($result === false) {
+        die("Query failed.");
+    }
+    
+    return $result;
+}
+
 
     public function get_cart_items() {
         $query = "SELECT * FROM tbl_cart";

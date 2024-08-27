@@ -185,14 +185,15 @@ color: #333;
 }
 #showLess{
     display: none;
-    margin-top: 20px;
+    margin: 20px;
     padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    text-align: center;
+    background: none;
+    color: #333;
+    border: 2px solid  #cf2c20 ;
     cursor: pointer;
-    font-size: 12px;
+}
+#showLess:hover{
+    background-color: #F0F0F0;
 }
 
 
@@ -233,8 +234,12 @@ color: #333;
 #loadMore {
     margin: 20px;
     padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
+    background: none;
+    
+    color: #333;
+    border: 2px solid  #cf2c20 ;
     cursor: pointer;
+}
+#loadMore:hover{
+    background-color: #F0F0F0;
 }
