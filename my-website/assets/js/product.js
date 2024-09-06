@@ -12,15 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let quantity = parseInt(quantityInput.value);
 
-    decreaseBtn.addEventListener('click', () => {
-        if (quantity > 1) {
-            quantity--;
-            quantityInput.value = quantity;
-        }
-    });
+   
 
-    increaseBtn.addEventListener('click', () => {
-        quantity++;
-        quantityInput.value = quantity;
-    });
+   
 });

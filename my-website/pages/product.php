@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
        
     </div>
-    <script src="../assets/js/product.js"></script>
+   
     <div class="product_decs_right">
         <hr>
         <div class="product_decs_right_name">
@@ -80,6 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </form>
             </div>
         <?php endif; ?>
+        <script src="../assets/js/product.js"></script>
         <hr>
     </div>
    

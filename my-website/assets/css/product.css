@@ -59,8 +59,10 @@
 }
 .product_decs_right_quantity{
     display: flex;
-    align-items: center;
-    gap: 10px;
+    text-align: center;
+    margin-left: 10px;
+    font-size: 15px;
+    border: 2px solid #333;
 }
 .product_decs_right label{
     font-size: 15px;
