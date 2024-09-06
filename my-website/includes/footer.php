@@ -71,18 +71,17 @@
             <div class="grid__column-2-4">
                 <h3 class="footer__heading">Trung tâm trợ giúp</h3>
                 <div class="footer__download--code">
-                    <img src="./images/pr_code.png" alt="code Qr" class="footer__download-qr">
-                    <div class="footer_download--apps">
-                        <img src="./images/gg_play.png" alt="goodle play" class="footer__download-app-img">
-                        <img src="./images/apstore.png" alt="app store" class="footer__download-app-img">
+                    
+                    <div class="footer_download--app">
+                        <img src="../assets/img/gg_play.png" alt="goodle play" class="footer__download-app-img">
+                        <img src="../assets/img/apstore.png" alt="app store" class="footer__download-app-img">
                     </div>
                 </div>
             </div>
 </div>
 <div class="footer__contact">
-<p class="footer__text">Chịu Trách Nhiệm Quản Lý Nội Dung: Nguyễn Đức Trí - Điện thoại liên hệ: 024 73081221 (ext 4678)</p>
-<p class="footer__text">Mã số doanh nghiệp: 0106773786 do Sở Kế hoạch & Đầu tư TP Hà Nội cấp lần đầu ngày 10/02/2015</p>
-<p class="footer__text">© 2015 - Bản quyền thuộc về Công ty TNHH Shopee</p>
+<p class="footer__text">Chịu Trách Nhiệm Quản Lý Nội Dung: Phan Van Tan - Điện thoại liên hệ: xx xxxx xxxx (ext 4678)</p>
+<p class="footer__text">© 2021 - Bản quyền thuộc về Công ty TNHH Eyewear</p>
 </div>
 </div>
 </footer>
