@@ -70,17 +70,18 @@ $show_product = $product->show_product();
 
             <div class="content">
                 <h3>why choose us? </h3>
-                <p>Premium Quality Eyewear:
-                We offer a curated selection of high-quality eyewear that is durable, stylish, and comfortable.
-                 Our products are made with premium materials to ensure long-lasting performance and clear vision.
+                <br>
+                <p>Kính mắt chất lượng cao: 
+                    Chúng tôi cung cấp tuyển chọn các loại kính mắt chất lượng cao, bền, phong cách và thoải mái.
+                    Sản phẩm của chúng tôi được làm bằng vật liệu cao cấp để đảm bảo hiệu suất lâu dài và tầm nhìn rõ ràng.
                 </p>
-                <p>Expertly Crafted Designs:
-                Our eyewear is developed by optical experts and designers to cater to all face shapes and personal styles.
-                 We’re committed to helping you achieve the perfect look with frames that fit and lenses that perform.</p>
+                <p>Thiết kế được chế tác chuyên nghiệp: 
+                    Kính mắt của chúng tôi được phát triển bởi các chuyên gia và nhà thiết kế quang học để phù hợp với mọi hình dạng khuôn mặt và phong cách cá nhân.
+                    Chúng tôi cam kết giúp bạn có được vẻ ngoài hoàn hảo với gọng kính vừa vặn và tròng kính hoạt động tốt.</p>
                 <p>
-                Sustainable Vision:
-                We are committed to sustainable practices. 
-                Our packaging is eco-friendly, and we prioritize products that are both good for your eyes and kind to the environment.
+                Tầm nhìn bền vững: 
+                Chúng tôi cam kết thực hiện các hoạt động bền vững. 
+                Bao bì của chúng tôi thân thiện với môi trường và chúng tôi ưu tiên các sản phẩm vừa tốt cho mắt vừa thân thiện với môi trường.
                 </p>
        
             </div>
